@@ -223,9 +223,8 @@ export default function UniSeriesAdministrativePresentation() {
                       {unit.installments.map((row, index) => (
                         <div
                           key={row.id}
-                          className={`h-[22px] grid grid-cols-6 text-[10px] text-white ${
-                            index % 2 === 1 ? "bg-white/10" : ""
-                          }`}
+                          className={`h-[22px] grid grid-cols-6 text-[10px] text-white ${index % 2 === 1 ? "bg-white/10" : ""
+                            }`}
                         >
                           <div className="flex items-center justify-center">
                             {row.id}

@@ -266,9 +266,8 @@ export default function UniSeriesResidentialPresentation() {
                       {unit.installments.map((row, idx) => (
                         <div
                           key={row.id}
-                          className={`h-[17px] grid grid-cols-6 text-[10px] text-white ${
-                            idx % 2 === 1 ? "bg-white/10" : ""
-                          }`}
+                          className={`h-[17px] grid grid-cols-6 text-[10px] text-white ${idx % 2 === 1 ? "bg-white/10" : ""
+                            }`}
                         >
                           <div className="flex items-center justify-center">
                             {row.id}
@@ -342,8 +341,8 @@ export default function UniSeriesResidentialPresentation() {
           <div className="p-[14px]">
             <div className="bg-white/5 w-full mx-auto relative">
               {/* Title */}
-              <h2 className="text-white text-[20px] font-bold text-right py-[20px] px-[18px]">
-                باقة التشطيب ( سوبرلوكس ) الوحدة السكنية
+              <h2 className="text-white text-[20px] font-bold text-center py-[20px] px-[18px]">
+                باقة التشطيب ( سوبرلوكس ) للوحدة السكنية
               </h2>
 
               {/* Section: اعمال الكهرباء */}
@@ -353,157 +352,125 @@ export default function UniSeriesResidentialPresentation() {
                 </span>
               </div>
               <div className="py-[12px] px-[18px]">
-                <p className="text-white text-[11px] text-right leading-[20px]">
-                  • اعمال تشطيب الكهرباء فى جميع الغرف و الريسبشن و المطبخ و
-                  الحمامات طبقا للرسومات و يشمل ( خراطيم - سلك سويدي - علب و
-                  مفاتيح و برايز شنايدر - قواطع شنايدر - لوحة توزيع - طبلون
-                  كهرباء 24 خط )
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • اعمال تشطيب الكهرباء ( خراطيم ابو العز - اسلاك سويدي - مفاتيح وبرايز فينوس - مفاتيح قواطع شنايدر - كشافات طوارئ
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  - ساوند سيستم موزع علي الغرف والصالات - انتركم مرئي - سمارت سيستم تحكم بباب الوحده ) شامل المصنعيات
                 </p>
               </div>
 
-              {/* Section: اعمال الارضيات - TABLE LAYOUT */}
+              {/* Section: اعمال الارضيات with side column */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
                   اعمال الارضيات
                 </span>
               </div>
-              <div className="flex border-b border-white/10">
-                {/* Right column - small label */}
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[12px]">
-                  <span className="text-white text-[10px] text-center">
-                    توريد وتركيب بورسلين ارضيات 1 متر * 1 متر
-                  </span>
+
+              <div className="flex border-t border-white/10">
+                {/* Left side - small column */}
+                <div className="w-[120px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p className="font-medium"></p>
                 </div>
-                {/* Left column - large content */}
-                <div className="flex-1 py-[12px] px-[15px]">
-                  <p className="text-white text-[11px] text-right">
-                    للريسبشن والغرف والطرقه
-                  </p>
+                {/* Right side - main content */}
+                <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
+                  <p>• توريد وتركيب ارضيات بورسلين هندي ( للاستقبال والطرقه وغرف النوم والبلكونات )</p>
+                  <p>• توريد وتركيب ارضيات وحوائط سيراميك جوهرة ( للحمامات والمطبخ )</p>
+                </div>
+              </div>
+              {/* Marble and Granite row */}
+              <div className="flex border-t border-white/10">
+                {/* Left side - small column */}
+                <div className="w-[120px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p className="font-medium">اعمال الرخام والجرانيت</p>
+                </div>
+                {/* Right side - main content */}
+                <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
+                  <p>• توريد وتركيب اعتاب رخام ( جلاكسي ) لمعابر الغرف وباب الوحده</p>
                 </div>
               </div>
 
-              {/* Section: اعمال السباكة - TABLE LAYOUT */}
+              {/* Section: أعمال السباكة with side column */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
-                  اعمال السباكة
+                  أعمال السباكة
                 </span>
               </div>
-              {/* Row 1 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    اعمال تاسيس المواسير والصرف للحمامات والمطبخ
-                  </span>
+                    
+
+
+
+
+
+              <div className="flex">
+                {/* Left side - small column */}
+                <div className="w-[120px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p className="font-medium"></p>
                 </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    ( ماسورة بى فى سى 3 بوصة - مواسير حرارى تركى - كوع تركى 90
-                    درجة )
-                  </p>
-                </div>
-              </div>
-              {/* Row 2 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    توريد وتركيب طقم حمام ديورافيت المانى او ما يعادلة
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    ( HDF جيت + حوض تعليق + قاعدة معلقة + شطاف + خلاط -
-                    اكسسوارات )
-                  </p>
-                </div>
-              </div>
-              {/* Row 3 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    توريد وتركيب سخان غاز
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    10 لتر اريستون او ما يعادلة
-                  </p>
-                </div>
-              </div>
-              {/* Row 4 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    توريد و تركيب خلاط
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    GROHE او ما يعادلة
-                  </p>
-                </div>
-              </div>
-              {/* Row 5 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    توريد وتركيب حوض مطبخ
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    ستانلس ستيل فرانكى او ما يعادلة
-                  </p>
+                {/* Right side - main content */}
+                <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
+                  <p>• اعمال عزل الحمامات والمطبخ ( اعمال نظافة + رقيه زجاجة + اديبوند + اديكريت + عزل سيكا 107 ) شامل المصنعيات</p>
+                  <p>• توريد ( مواسير الصرف ( كاسيل ) + التغذية ( BR ) + المحابس الدش ( BR ) + محابس الزاوية ( جروهى ) +</p>
+                  <p>  الليات ( سمارت هوم ) ) للحمامين + المطبخ</p>
                 </div>
               </div>
 
-              {/* Section: اعمال الرخام والسيراميك */}
-              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
-                <span className="text-white text-[16px] font-medium">
-                  اعمال الرخام والسيراميك
-                </span>
-              </div>
-              <div className="py-[12px] px-[18px]">
-                <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>
-                    • توريد وتركيب رخام صناعى للمطبخ مع حليه المنيوم بسمك 3.5 سم
-                    + 1 متر ظهر
-                  </p>
-                  <p>• توريد و تركيب وزر سيراميك للغرف و الريسبشن</p>
-                  <p>
-                    • توريد و تركيب سيراميك حوائط و ارضيات كليوباترا 30 * 60
-                    للحمامات و المطبخ و البلكونة
-                  </p>
+              {/* Section: اعمال تشطيب الحمام الرئيسى with side column */}
+              <div className="flex">
+                {/* Left side - small column */}
+                <div className="w-[120px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p className="font-medium">اعمال تشطيب الحمام الرئيسى</p>
+                </div>
+                {/* Right side - main content */}
+                <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
+                  <p>• حوض حمام ديورافيت اعلي الرخامة</p>
+                  <p>• قاعدة ديورافيت معلقة + خزان دفن ديورافيت</p>
+                  <p>• طقم خلاط ( حوض AA + B1708AA + بانيو (BC957AA ايديال ستاندر</p>
+                  <p>• كابينة شاور 110*80*185 حسب رغبه العميل</p>
+                  <p>• طقم اكسسوار استانلس كروم ( ديرم )</p>
+                  <p>• شطاف جانبي تركي</p>
                 </div>
               </div>
 
-              {/* Section: اعمال التاسيسات المواد */}
+              {/* Section: اعمال تشطيب الحمام الثانوى with side column */}
+              <div className="flex border-t border-white/10">
+                {/* Left side - small column */}
+                <div className="w-[120px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p className="font-medium">اعمال تشطيب الحمام الثانوى</p>
+                </div>
+                {/* Right side - main content */}
+                <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
+                  <p>• طقم حمام ( قاعدة + حوض ) ايديال ستاندر ( بلازا + يونيستورم ) شامل خلاط الحوض</p>
+                  <p>• خلاط الدش + مسطرة الدش 3 نظام ايديال ستاندر</p>
+                  <p>• طقم اكسسوار استانلس كروم ( ديرم )</p>
+                  <p>• شطاف جانبى تركى</p>
+                </div>
+              </div>
+
+              {/* Section: اعمال تشطيب المطبخ with side column */}
+              <div className="flex border-t border-white/10">
+                {/* Left side - small column */}
+                <div className="w-[120px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p className="font-medium">اعمال تشطيب المطبخ</p>
+                </div>
+                {/* Right side - main content */}
+                <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
+                  <p>• رخام للمطبخ بمساحة لا تزيد عن 4 م2 ( جندولا / فيردي / احمر اسوانى ) + قواطع راسية ( منيا )</p>
+                  <p>• دلة حوض مطبخ استانلس 48*75</p>
+                  <p>• خلاط حوض شجرة شداد</p>
+                  <p>• اعمال مصنعيات ( تأسيس + تشطيب )</p>
+                </div>
+              </div>
+
+              {/* Section: اعمال التكسيات للحوائط */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
-                  اعمال التاسيسات المواد
+                  اعمال التكسيات للحوائط
                 </span>
               </div>
               <div className="py-[12px] px-[18px]">
-                <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>
-                    • اعمال تاسيس التكييفات نحاس ابو الهول 3/8 * 5/8 اسبليت مع
-                    توصيل الكهرباء والصرف حسب الرسم والتصميم
-                  </p>
-                  <p>
-                    • تاسيس الغاز توريد وتركيب ماسورة نحاس مع التوصيل من الرايزر
-                    حتي نقطة الاستلام من داخل الوحدة
-                  </p>
-                </div>
-              </div>
-
-              {/* Important Note */}
-              <div className="py-[15px] px-[18px] border-t border-white/10">
-                <p className="text-[#ffcf57] text-[10px] mb-[8px]">
-                  * ملحوظة هامة
-                </p>
-                <p className="text-white text-[10px] text-right leading-[18px]">
-                  هذة الباقة لا تشمل الابواب و النجارة و السخانات الكهربائية و
-                  التكييفات و انما يتم احتسابها بالوحدة او حسب الطلب من العميل
-                  بشكل منفصل
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • توريد وتركيب تكسيات للحوائط (بدون علفات ) فى الاستقبال وغرفة النوم الرئيسية من بديل الرخام او الشيبورد حسب رغبة العميل  بحد اقصى 25 م2 للشقة بتكلفة للمتر بحد اقصى1000ج
                 </p>
               </div>
             </div>
@@ -514,72 +481,73 @@ export default function UniSeriesResidentialPresentation() {
         <Slide gradient>
           <div className="p-[14px]">
             <div className="bg-white/5 w-full mx-auto relative">
-              {/* Section: اعمال المعجون */}
+              {/* Section: اعمال الدهانات */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center mt-[20px]">
                 <span className="text-white text-[16px] font-medium">
-                  اعمال المعجون
+                  اعمال الدهانات
                 </span>
               </div>
               <div className="py-[12px] px-[18px]">
-                <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>
-                    • تأسيس وتشطيب المعجون والدهانات ( جيوتن ) بالوان حسب اختيار
-                    العميل عبارة عن :
-                  </p>
-                  <p className="pr-[20px]">- سيلر مائى</p>
-                  <p className="pr-[20px]">- عدد 3 سكينة معجون</p>
-                  <p className="pr-[20px]">- عدد 3 اوجة دهان بلاستيك</p>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • تأسيس وتشطيب الحوائط والاسقف ( جيوتن ) بالوان حسب اختيار العميل عباره عن :
+                </p>
+                <div className="flex justify-between text-white text-[10px] mt-[8px] pr-[20px]">
+                  <span>- عدد 1 بطانة بلاستيك</span>
+                  <span>- عدد 2 سكينة معجون اكريليك 900</span>
+                  <span>- وش سيلر مائي مقاوم</span>
+                </div>
+                <div className="flex justify-between text-white text-[10px] mt-[4px] pr-[20px]">
+                  <span>- عدد 1 سكينه معجون بـلاستيك + عدد 1 سكـينة معـجـون مقـاوم للشـروخ</span>
+                  <span>- عدد 3 وش تشطيب بلاستيك</span>
                 </div>
               </div>
 
-              {/* Section: اعمال الاسقف - TABLE LAYOUT */}
+              {/* Section: اعمال الاسقف */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
                   اعمال الاسقف
                 </span>
               </div>
-              {/* Row 1 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    توريد وتركيب جيبسون بورد سادة للاسقف
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    مع عمل بؤج لاماكن الاضاءة والتكييفات والاسبوتات حسب الرسم
-                    والتصميم
-                  </p>
-                </div>
-              </div>
-              {/* Row 2 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    تشطيب الاسقف المعلقة
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    سكينة و وش دهان
-                  </p>
-                </div>
+              <div className="py-[12px] px-[18px]">
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • توريد وتركيب اسقف جيبسوم بورد ابيض للاستقبال والغرف والطرقات حسب الرسومات والتصميم ( كناوف +
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px] pr-[12px]">
+                  صاج بدوي 0.40 + زوايا للتثبيت فيشر ومسمار )
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • توريد وتركيب اسقف جيبسوم بورد اخضر للحمامات حسب الرسومات والتصميم ( كناوف + صاج بدوي 0.40 +
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px] pr-[12px]">
+                  زوايا للتثبيت فيشر ومسمار )
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • توريد وتركيب اسقف جيبسوم بورد احمر للمطبخ حسب الرسومات والتصميم ( كناوف + صاج بدوي 0.40 +
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px] pr-[12px]">
+                  زوايا للتثبيت فيشر ومسمار )
+                </p>
               </div>
 
-              {/* Section: اعمال الكهرباء ( الاجهزة والتشطيبات ) */}
+              {/* Section: اعمال الفتحات ( الابواب والشبابيك ) */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
-                  اعمال الكهرباء ( الاجهزة والتشطيبات )
+                  اعمال الفتحات ( الابواب والشبابيك )
                 </span>
               </div>
               <div className="py-[12px] px-[18px]">
-                <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>
-                    • توريد وتركيب وحدات اضاءة - اسبوتات والمطبخ والحمامات
-                    والطرقة والريسبشن فقط لا تشمل الغرف ( عدد الوحدات حسب
-                    التصميم المقدم من الشركة ) مع تركيب ال LED
-                  </p>
-                </div>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • بالعدد توريد وتركيب ابواب للغرف والحمامات بتصميم حسب رغبه العميل بتكلفة تتراوح من ( 6000- 8000 ) جنيه للباب (
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px] pr-[12px]">
+                  الابواب جاهزة شامله الحلق والاكسسوارات والبرور )
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • بالمتر المسطح توريد وتركيب شبابيك للحمامات والمطبخ قطاع ايمان فلاب شامل السلك و تركيب الشفاط داخل الشباك
+                </p>
+                <p className="text-white text-[10px] text-right leading-[20px]">
+                  • بالمتر المسطح توريد وتركيب شاتر للشبابيك الخارجيه شامل الموتور ( ايطالي )
+                </p>
               </div>
 
               {/* Pricing Box */}
@@ -588,7 +556,7 @@ export default function UniSeriesResidentialPresentation() {
                 <div className="flex justify-between items-start px-[16px] pt-[16px]">
                   <div className="flex flex-col gap-[11px] items-start w-[150px]">
                     <div className="flex gap-[4px] items-end text-white">
-                      <span className="text-[14px] font-bold">7,667</span>
+                      <span className="text-[14px] font-bold">7,168</span>
                       <span className="text-[9.977px]">
                         جنيه مصرى لكل متر مربع
                       </span>
@@ -611,7 +579,7 @@ export default function UniSeriesResidentialPresentation() {
                 {/* Total row - yellow background */}
                 <div className="bg-[#ffe9a6] h-[47px] w-full flex justify-between items-center px-[16px]">
                   <div className="flex gap-[4px] items-end text-black">
-                    <span className="text-[14px] font-bold">8,000</span>
+                    <span className="text-[14px] font-bold">8,243</span>
                     <span className="text-[9.977px]">
                       جنيه مصرى لكل متر مربع
                     </span>
@@ -623,7 +591,7 @@ export default function UniSeriesResidentialPresentation() {
               </div>
 
               {/* Notes Section */}
-              <div className="flex gap-[8px] items-center justify-center py-[15px]">
+              <div className="flex gap-[8px] items-start justify-center py-[15px]">
                 <div className="bg-white/20 w-[60px] h-[42px] flex items-center justify-center">
                   <span className="text-white text-[8px] text-center">
                     ملحوظات هامه
@@ -631,13 +599,16 @@ export default function UniSeriesResidentialPresentation() {
                 </div>
                 <div className="w-[400px] text-white text-[9px] text-right leading-[18px]">
                   <p>
-                    • الدفعات تكون بناءا على المراحل المعتمده مع العميل و تكون
-                    مقدما فى كل مرحله.
+                    • الحساب بالفواتير الفعليه لكل بند بالاضافه الى 15% 3- الدفعات تكون بناءا على المراحل
                   </p>
-                  <p>• مدة التشطيب : من شهر و نصف الى شهرين</p>
                   <p>
-                    • الحساب بالفواتير الفعليه لكل بند بالاضافه الى 15% نسبة
-                    الاشراف.
+                    المعتمده مع العميل و تكون مقدما فى كل مرحله. الاشراف.
+                  </p>
+                  <p>
+                    • الحساب بالفواتير الفعليه لكل بند بالاضافه الى 15% نسبة الاشراف.
+                  </p>
+                  <p>
+                    • مدة التشطيب : من ثلاث شهور الى اربع شهور
                   </p>
                 </div>
               </div>
