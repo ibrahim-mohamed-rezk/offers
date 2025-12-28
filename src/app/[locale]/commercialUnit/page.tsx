@@ -131,13 +131,13 @@ export default function UniSeriesPresentation() {
               <h2 className="text-white text-[22px] font-medium mb-6">
                 مبسوطين إنك بقيت جزء من عيلة آركس
               </h2>
-              <div className="text-white text-[14px] leading-relaxed mt-[36px] font-normal ">
+              <div className="text-white text-[14px] leading-relaxed mt-[36px] font-normal">
                 <p>
                   وخطوتك دي بالنسبة لنا أكتر من استلام وحدة دي بداية شراكة طويلة
                   مبنية على ثقة وتقدير متبادل
                 </p>
               </div>
-              <div className="text-[#ffcf57] text-[14px] font-medium mt-[25px] ">
+              <div className="text-[#ffcf57] text-[14px] font-medium mt-[25px]">
                 <p>وعلشان نديك أقصى استفادة من قرارك</p>
                 <p className="mt-[10px]">
                   وفرنالك خطة سداد معجلة تديك خصم خاص عند السداد المبكر.
