@@ -37,3 +37,48 @@
 .font-sst-arabic {
   font-family: "SST Arabic";
 }
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Each slide on its own page */
+  #print-content > div {
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  #print-content > div:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Ensure tables don't break */
+  table, .grid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Preserve background colors */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Hide print button */
+  button[aria-label="Export as PDF"] {
+    display: none !important;
+  }
+}

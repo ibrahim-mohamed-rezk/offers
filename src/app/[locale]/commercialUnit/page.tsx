@@ -85,7 +85,7 @@ export default function UniSeriesPresentation() {
 
   return (
     <div
-      className="min-h-screen py-8 px-4"
+      className="min-h-screen py-8 px-4 print:py-0 print:px-0"
       style={{
         background: "#444",
         fontFamily: "SST Arabic, Arial, sans-serif",
