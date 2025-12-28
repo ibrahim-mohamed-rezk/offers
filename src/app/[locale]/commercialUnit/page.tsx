@@ -321,13 +321,6 @@ export default function UniSeriesPresentation() {
                 للحمامات والاوفيس والبلكونات )
               </li>
             </ul>
-          </div>
-        </Slide>
-
-        {/* Slide 6: Super Lux Package Details */}
-        <Slide gradient>
-          <div className="py-6 px-6 bg-white/5">
-            {/* Paint Works */}
             <SectionHeader>اعمال الدهانات</SectionHeader>
             <div className="text-white text-xs text-right py-3 px-4 leading-relaxed">
               <ul className="list-disc list-inside mb-3">
@@ -336,12 +329,21 @@ export default function UniSeriesPresentation() {
                   العميل عباره عن :
                 </li>
               </ul>
-              <div className="flex flex-wrap gap-4 justify-end text-xs pr-4">
+              <div className="flex flex-wrap gap-4 justify-start text-xs pr-4">
                 <span>- وش سيلر مائي مقاوم</span>
                 <span>- عدد 2 سكينة معجون اكريليك 900</span>
                 <span>- عدد 1 بطانة بلاستيك</span>
               </div>
-              <div className="flex flex-wrap gap-4 justify-end text-xs pr-4 mt-2">
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 6: Super Lux Package Details */}
+        <Slide gradient>
+          <div className="py-6 px-6 bg-white/5">
+            {/* Paint Works */}
+            <div className="text-white text-xs text-right py-3 px-4 leading-relaxed">
+              <div className="flex flex-wrap gap-4 justify-start text-xs pr-4 mt-2">
                 <span>- عدد 3 وش تشطيب بلاستيك</span>
                 <span>
                   - عدد 1 سكينه معجون بـــلاسـتيك + عـدد 1 سكـــينه معـــجون
@@ -376,7 +378,7 @@ export default function UniSeriesPresentation() {
                 </div>
                 <div className="text-left">
                   <div className="flex items-end gap-1">
-                    <span className="text-white text-sm font-bold">7,667</span>
+                    <span className="text-white text-sm font-bold">5,283</span>
                     <span className="text-white text-xs">
                       جنيه مصرى لكل متر مربع
                     </span>
@@ -394,7 +396,7 @@ export default function UniSeriesPresentation() {
                   </span>
                 </div>
                 <div className="flex items-end gap-1">
-                  <span className="text-black text-sm font-bold">8,000</span>
+                  <span className="text-black text-sm font-bold">6,076</span>
                   <span className="text-black text-xs">
                     جنيه مصرى لكل متر مربع
                   </span>
