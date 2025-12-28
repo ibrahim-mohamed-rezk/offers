@@ -54,6 +54,7 @@ export default function UniSeriesPresentation() {
       customerName: client.اسم_العميل,
       unitCode: (unit as any).الكود || "-",
       unitModel: unit.النموذج,
+      floor: (unit as any).الدور || "-",
       installments: unit.الاقساط.map((inst) => ({
         id: inst.رقم_القسط,
         amount: inst.الصافي_بعد_الخصم,
@@ -61,7 +62,7 @@ export default function UniSeriesPresentation() {
     };
   }, [clientName]);
 
-  const { customerName, unitCode, unitModel } = clientData;
+  const { customerName, floor, unitCode, unitModel } = clientData;
 
   // Format payment data
   const paymentData = clientData.installments.map((inst) => ({
@@ -150,6 +151,10 @@ export default function UniSeriesPresentation() {
                   <div className="flex gap-2 items-center">
                     <span className="text-[#ffcf57]">النموذج:</span>
                     <span className="text-white font-bold">{unitModel}</span>
+                  </div>
+                   <div className="flex gap-[5px] items-center">
+                    <span className="text-[#ffcf57]">الدور:</span>
+                    <span className="text-white font-bold">{floor}</span>
                   </div>
                 </div>
               </div>

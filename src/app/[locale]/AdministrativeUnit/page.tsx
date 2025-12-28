@@ -97,7 +97,8 @@ export default function UniSeriesAdministrativePresentation() {
       customerName: client.اسم_العميل,
       unitCode: (unit as any).الكود || "-",
       unitModel: unit.النموذج,
-      floor: "-",
+      
+      floor: unit.الدور,
       installments: unit.الاقساط.map((inst) => ({
         id: inst.رقم_القسط,
         type: "قسط ربع سنوي",
@@ -198,10 +199,10 @@ export default function UniSeriesAdministrativePresentation() {
                     <span className="text-[#ffcf57]">النموذج:</span>
                     <span className="text-white font-bold">{unitModel}</span>
                   </div>
-                  {/* <div className="flex gap-[5px] items-center">
+                  <div className="flex gap-[5px] items-center">
                     <span className="text-[#ffcf57]">الدور:</span>
                     <span className="text-white font-bold">{floor}</span>
-                  </div> */}
+                  </div>
                 </div>
               </div>
 
@@ -324,10 +325,10 @@ export default function UniSeriesAdministrativePresentation() {
               <div className="flex">
                 {/* Left side - small column with additional items */}
                 <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
-                  <p>• خلاط جروهى - حوض معلق</p>
+                  {/* <p>• خلاط جروهى - حوض معلق</p>
                   <p>• سيفون ارضى المانى</p>
                   <p>• فلتر مياه 3 مراحل</p>
-                  <p>• عداد مياه</p>
+                  <p>• عداد مياه</p> */}
                 </div>
                 {/* Right side - main content (larger) */}
                 <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">

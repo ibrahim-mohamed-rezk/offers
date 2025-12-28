@@ -129,7 +129,7 @@ export default function UniSeriesResidentialPresentation() {
       units: client.الوحدات.map((unit) => ({
         unitCode: (unit as any).الكود || "-",
         unitModel: unit.النموذج,
-        floor: "-", // Info not in JSON
+        floor: unit.الدور, // Info not in JSON
         installments: unit.الاقساط.map((inst) => ({
           id: inst.رقم_القسط,
           type: "قسط ربع سنوي",
@@ -229,6 +229,10 @@ export default function UniSeriesResidentialPresentation() {
                         <span className="text-white font-bold">
                           {unit.unitModel}
                         </span>
+                      </div>
+                      <div className="flex gap-[5px] items-center">
+                        <span className="text-[#ffcf57]">الدور:</span>
+                        <span className="text-white font-bold">{unit.floor}</span>
                       </div>
                     </div>
                   </div>
