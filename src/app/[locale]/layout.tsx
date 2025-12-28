@@ -4,8 +4,8 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { ClientToaster } from "@/components/ui/ClientToaster";
-import Header from "@/components/globals/Header";
-import Footer from "@/components/globals/Footer";
+// import Header from "@/components/globals/Header";
+// import Footer from "@/components/globals/Footer";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -33,11 +33,11 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           {/* <ReduxProvider> */}
           <ClientToaster />
-          <Header />
+          {/* <Header /> */}
           <main className="bg-[var(--color-text-black)] min-h-screen rounded-tl-[20px] md:rounded-tl-[30px] lg:rounded-tl-[40px] rounded-tr-[20px] md:rounded-tr-[30px] border-b-0 pb-[50px] lg:rounded-tr-[40px]">
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
           {/* <ToastContainer /> */}
           {/* <AutoLogin /> */}
           {/* </ReduxProvider> */}

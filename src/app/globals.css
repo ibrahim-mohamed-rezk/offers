@@ -1,11 +1,39 @@
 /* fonts */
-/* lato */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-/* cinzel */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+/* SST Arabic */
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SST-Arabic-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SST-Arabic-Roman.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SST-Arabic-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SST-Arabic-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @import "tailwindcss";
 
-
-
-
+.font-sst-arabic {
+  font-family: "SST Arabic";
+}

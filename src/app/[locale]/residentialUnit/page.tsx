@@ -1,0 +1,499 @@
+import ArxAndUniLogos from "@/components/icons/ArxAndUniLogos";
+import HeroLogo from "@/components/icons/heroLogo";
+import Slide from "@/components/Slide";
+import React from "react";
+
+export default function UniSeriesResidentialPresentation() {
+  // Payment plan data - more rows as shown in Figma
+  const paymentData = [
+    { id: 1, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 2, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 3, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 4, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 5, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 6, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 7, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 8, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
+    { id: 9, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "31,300", net: "234,950", hasDiscount: true },
+  ];
+
+  return (
+    <div
+      className="min-h-screen py-8 px-4"
+      style={{
+        background: "#444",
+        fontFamily: "SST Arabic, Arial, sans-serif",
+      }}
+      dir="rtl"
+    >
+      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+        
+        {/* Slide 1: Hero - UNI Series */}
+        <Slide gradient>
+          <div className="flex items-center justify-center w-full h-[407px]">
+            <HeroLogo />
+          </div>
+        </Slide>
+
+        {/* Slide 2: Welcome Message */}
+        <Slide gradient>
+          <div className="p-[13px]">
+            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[407px] text-center">
+              <h2 className="text-white text-[22px] font-medium mb-6">
+                مبسوطين إنك بقيت جزء من عيلة آركس
+              </h2>
+              <div className="text-white text-[14px] leading-relaxed mt-[36px] font-normal">
+                <p>
+                  وخطوتك دي بالنسبة لنا أكتر من استلام وحدة دي بداية شراكة طويلة
+                  مبنية على ثقة وتقدير متبادل
+                </p>
+              </div>
+              <div className="text-[#ffcf57] text-[14px] font-medium mt-[25px]">
+                <p>وعلشان نديك أقصى استفادة من قرارك</p>
+                <p className="mt-[10px]">
+                  وفرنالك خطة سداد معجلة تديك خصم خاص عند السداد المبكر.
+                </p>
+              </div>
+              <p className="text-white text-[19px] font-medium mt-[64px]">
+                كل ما تختار تسبق بخطوة… مكسبك بيزيد
+              </p>
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 3: Early Payment Plan */}
+        <Slide gradient>
+          <div className="p-[13px]">
+            <div className="border bg-white/5 border-white/5">
+              <h2 className="text-white mt-[25px] text-[20px] font-bold text-center mb-4">
+                كشف السداد المبكر - Early Payment Plan
+              </h2>
+
+              {/* Customer Info */}
+              <div className="flex px-[25px] justify-between gap-8 mt-[30px] text-[10px]">
+                <div className="flex flex-col gap-[15px]">
+                  <div className="flex gap-[5px] items-center">
+                    <span className="text-[#ffcf57]">اسم العميل:</span>
+                    <span className="text-white font-bold text-[12px]">
+                      سوسو محمد فكرى محمد شرف
+                    </span>
+                  </div>
+                  <div className="flex gap-[5px] items-center">
+                    <span className="text-[#ffcf57]">القطعة:</span>
+                    <span className="text-white font-medium">
+                      يونى (8) شمال الجامعة القطعه رقم (27)
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[15px]">
+                  <div className="flex gap-[5px] items-center">
+                    <span className="text-[#ffcf57]">النموذج:</span>
+                    <span className="text-white font-bold">محل (5)/(6)</span>
+                  </div>
+                  <div className="flex gap-[5px] items-center">
+                    <span className="text-[#ffcf57]">الدور:</span>
+                    <span className="text-white font-bold">الميزانين</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment Table */}
+              <div className="mt-[25px] overflow-hidden">
+                {/* Table Header */}
+                <div className="bg-white/20 h-[33px] grid grid-cols-6 text-[10px] text-white font-medium">
+                  <div className="flex items-center justify-center border-l border-white/10">م</div>
+                  <div className="flex items-center justify-center border-l border-white/10">نوع القسط</div>
+                  <div className="flex items-center justify-center border-l border-white/10">تاريخ الاستحقاق</div>
+                  <div className="flex items-center justify-center border-l border-white/10">المبلغ المتبقي</div>
+                  <div className="flex items-center justify-center border-l border-white/10 text-[#ffcf57]">قيمة الخصم</div>
+                  <div className="flex items-center justify-center text-[9px]">الصافي بعد الخصم</div>
+                </div>
+
+                {/* Table Body */}
+                <div className="bg-[#d9d9d9]/10">
+                  {paymentData.map((row, index) => (
+                    <div
+                      key={row.id}
+                      className={`h-[17px] grid grid-cols-6 text-[10px] text-white ${
+                        index % 2 === 1 ? "bg-white/10" : ""
+                      }`}
+                    >
+                      <div className="flex items-center justify-center">{row.id}</div>
+                      <div className="flex items-center justify-center">{row.type}</div>
+                      <div className="flex items-center justify-center">{row.date}</div>
+                      <div className="flex items-center justify-center">{row.remaining}</div>
+                      <div className="flex items-center justify-center text-[#ffcf57]">{row.discount}</div>
+                      <div className="flex items-center justify-center">{row.net}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Total Row */}
+                <div className="h-[34px] grid grid-cols-6 text-[10px] bg-transparent border-t border-white/20">
+                  <div className="col-span-2 flex items-center justify-end pr-4 text-white font-medium">
+                    إجمالي الوحدة :
+                  </div>
+                  <div className="flex items-center justify-center"></div>
+                  <div className="flex items-center justify-center text-white font-medium">1,331,250</div>
+                  <div className="flex items-center justify-center text-[#ffcf57] font-bold">31,300</div>
+                  <div className="flex items-center justify-center text-white">1,277,750</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 4: Finishing Offers Intro */}
+        <Slide gradient>
+          <div className="p-[13px]">
+            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[382px] text-center">
+              <h2 className="text-white text-[22px] font-medium">
+                علشان تستلم وحدتك وانت مطمن
+              </h2>
+              <div className="mt-[64px]">
+                <p className="text-[#ffcf57] text-[53.514px] font-bold leading-tight">
+                  وفرنالك
+                </p>
+                <p className="text-[#ffcf57] text-[22px] font-bold mt-[20px]">
+                  عروض تشطيب مدروسة تريحك من أي تفاصيل
+                </p>
+              </div>
+              <p className="text-white text-[20px] font-medium mt-[64px]">
+                وتخلي كل حاجة جاهزة على ذوقك
+              </p>
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 5: Super Lux Package - Residential Unit - Part 1 */}
+        <Slide gradient>
+          <div className="p-[14px]">
+            <div className="bg-white/5 w-full mx-auto relative">
+              {/* Title */}
+              <h2 className="text-white text-[20px] font-bold text-right py-[20px] px-[18px]">
+                باقة التشطيب ( سوبرلوكس ) الوحدة السكنية
+              </h2>
+
+              {/* Section: اعمال الكهرباء */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال الكهرباء
+                </span>
+              </div>
+              <div className="py-[12px] px-[18px]">
+                <p className="text-white text-[11px] text-right leading-[20px]">
+                  • اعمال تشطيب الكهرباء فى جميع الغرف و الريسبشن و المطبخ و الحمامات طبقا للرسومات و يشمل ( خراطيم - سلك سويدي - علب و مفاتيح و برايز شنايدر - قواطع شنايدر - لوحة توزيع - طبلون كهرباء 24 خط )
+                </p>
+              </div>
+
+              {/* Section: اعمال الارضيات - TABLE LAYOUT */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال الارضيات
+                </span>
+              </div>
+              <div className="flex border-b border-white/10">
+                {/* Right column - small label */}
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[12px]">
+                  <span className="text-white text-[10px] text-center">
+                    توريد وتركيب بورسلين ارضيات 1 متر * 1 متر
+                  </span>
+                </div>
+                {/* Left column - large content */}
+                <div className="flex-1 py-[12px] px-[15px]">
+                  <p className="text-white text-[11px] text-right">
+                    للريسبشن والغرف والطرقه
+                  </p>
+                </div>
+              </div>
+
+              {/* Section: اعمال السباكة - TABLE LAYOUT */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال السباكة
+                </span>
+              </div>
+              {/* Row 1 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    اعمال تاسيس المواسير والصرف للحمامات والمطبخ
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    ( ماسورة بى فى سى 3 بوصة - مواسير حرارى تركى - كوع تركى 90 درجة )
+                  </p>
+                </div>
+              </div>
+              {/* Row 2 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    توريد وتركيب طقم حمام ديورافيت المانى او ما يعادلة
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    ( HDF جيت + حوض تعليق + قاعدة معلقة + شطاف + خلاط - اكسسوارات )
+                  </p>
+                </div>
+              </div>
+              {/* Row 3 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    توريد وتركيب سخان غاز
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    10 لتر اريستون او ما يعادلة
+                  </p>
+                </div>
+              </div>
+              {/* Row 4 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    توريد و تركيب خلاط
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    GROHE او ما يعادلة
+                  </p>
+                </div>
+              </div>
+              {/* Row 5 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    توريد وتركيب حوض مطبخ
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    ستانلس ستيل فرانكى او ما يعادلة
+                  </p>
+                </div>
+              </div>
+
+              {/* Section: اعمال الرخام والسيراميك */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال الرخام والسيراميك
+                </span>
+              </div>
+              <div className="py-[12px] px-[18px]">
+                <div className="text-white text-[11px] text-right leading-[22px]">
+                  <p>• توريد وتركيب رخام صناعى للمطبخ مع حليه المنيوم بسمك 3.5 سم + 1 متر ظهر</p>
+                  <p>• توريد و تركيب وزر سيراميك للغرف و الريسبشن</p>
+                  <p>• توريد و تركيب سيراميك حوائط و ارضيات كليوباترا 30 * 60 للحمامات و المطبخ و البلكونة</p>
+                </div>
+              </div>
+
+              {/* Section: اعمال التاسيسات المواد */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال التاسيسات المواد
+                </span>
+              </div>
+              <div className="py-[12px] px-[18px]">
+                <div className="text-white text-[11px] text-right leading-[22px]">
+                  <p>• اعمال تاسيس التكييفات نحاس ابو الهول 3/8 * 5/8 اسبليت مع توصيل الكهرباء والصرف حسب الرسم والتصميم</p>
+                  <p>• تاسيس الغاز توريد وتركيب ماسورة نحاس مع التوصيل من الرايزر حتي نقطة الاستلام من داخل الوحدة</p>
+                </div>
+              </div>
+
+              {/* Important Note */}
+              <div className="py-[15px] px-[18px] border-t border-white/10">
+                <p className="text-[#ffcf57] text-[10px] mb-[8px]">* ملحوظة هامة</p>
+                <p className="text-white text-[10px] text-right leading-[18px]">
+                  هذة الباقة لا تشمل الابواب و النجارة و السخانات الكهربائية و التكييفات و انما يتم احتسابها بالوحدة او حسب الطلب من العميل بشكل منفصل
+                </p>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 6: Super Lux Package - Residential Unit - Part 2 */}
+        <Slide gradient>
+          <div className="p-[14px]">
+            <div className="bg-white/5 w-full mx-auto relative">
+              
+              {/* Section: اعمال المعجون */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center mt-[20px]">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال المعجون
+                </span>
+              </div>
+              <div className="py-[12px] px-[18px]">
+                <div className="text-white text-[11px] text-right leading-[22px]">
+                  <p>• تأسيس وتشطيب المعجون والدهانات ( جيوتن ) بالوان حسب اختيار العميل عبارة عن :</p>
+                  <p className="pr-[20px]">- سيلر مائى</p>
+                  <p className="pr-[20px]">- عدد 3 سكينة معجون</p>
+                  <p className="pr-[20px]">- عدد 3 اوجة دهان بلاستيك</p>
+                </div>
+              </div>
+
+              {/* Section: اعمال الاسقف - TABLE LAYOUT */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال الاسقف
+                </span>
+              </div>
+              {/* Row 1 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    توريد وتركيب جيبسون بورد سادة للاسقف
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    مع عمل بؤج لاماكن الاضاءة والتكييفات والاسبوتات حسب الرسم والتصميم
+                  </p>
+                </div>
+              </div>
+              {/* Row 2 */}
+              <div className="flex border-b border-white/10">
+                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
+                  <span className="text-white text-[9px] text-center px-[5px]">
+                    تشطيب الاسقف المعلقة
+                  </span>
+                </div>
+                <div className="flex-1 py-[10px] px-[15px]">
+                  <p className="text-white text-[10px] text-right">
+                    سكينة و وش دهان
+                  </p>
+                </div>
+              </div>
+
+              {/* Section: اعمال الكهرباء ( الاجهزة والتشطيبات ) */}
+              <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
+                <span className="text-white text-[16px] font-medium">
+                  اعمال الكهرباء ( الاجهزة والتشطيبات )
+                </span>
+              </div>
+              <div className="py-[12px] px-[18px]">
+                <div className="text-white text-[11px] text-right leading-[22px]">
+                  <p>• توريد وتركيب وحدات اضاءة - اسبوتات والمطبخ والحمامات والطرقة والريسبشن فقط لا تشمل الغرف ( عدد الوحدات حسب التصميم المقدم من الشركة ) مع تركيب ال LED</p>
+                </div>
+              </div>
+
+              {/* Pricing Box */}
+              <div className="bg-white/20 w-full h-[117px] overflow-hidden mt-[20px]">
+                {/* Cost per meter row */}
+                <div className="flex justify-between items-start px-[16px] pt-[16px]">
+                  <div className="flex flex-col gap-[11px] items-start w-[150px]">
+                    <div className="flex gap-[4px] items-end text-white">
+                      <span className="text-[14px] font-bold">7,667</span>
+                      <span className="text-[9.977px]">جنيه مصرى لكل متر مربع</span>
+                    </div>
+                    <div className="flex gap-[2px] items-start text-white text-right">
+                      <span className="text-[9px] font-light">بالاضافه الى نسبة الاشراف</span>
+                      <span className="text-[10px] font-medium">15%</span>
+                    </div>
+                  </div>
+                  <span className="text-white text-[10px] font-medium">
+                    تكلفة تشطيب / المتر المربع
+                  </span>
+                </div>
+
+                {/* Divider line */}
+                <div className="w-full h-px bg-white/30 mt-[16px]" />
+
+                {/* Total row - yellow background */}
+                <div className="bg-[#ffe9a6] h-[47px] w-full flex justify-between items-center px-[16px]">
+                  <div className="flex gap-[4px] items-end text-black">
+                    <span className="text-[14px] font-bold">8,000</span>
+                    <span className="text-[9.977px]">جنيه مصرى لكل متر مربع</span>
+                  </div>
+                  <span className="text-black text-[10.077px] font-medium">
+                    يصبح الاجمالي
+                  </span>
+                </div>
+              </div>
+
+              {/* Notes Section */}
+              <div className="flex gap-[8px] items-center justify-center py-[15px]">
+                <div className="bg-white/20 w-[60px] h-[42px] flex items-center justify-center">
+                  <span className="text-white text-[8px] text-center">
+                    ملحوظات هامه
+                  </span>
+                </div>
+                <div className="w-[400px] text-white text-[9px] text-right leading-[18px]">
+                  <p>• الدفعات تكون بناءا على المراحل المعتمده مع العميل و تكون مقدما فى كل مرحله.</p>
+                  <p>• مدة التشطيب : من شهر و نصف الى شهرين</p>
+                  <p>• الحساب بالفواتير الفعليه لكل بند بالاضافه الى 15% نسبة الاشراف.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 7: Referral Benefits */}
+       <Slide gradient>
+          <div className="py-12 px-8 text-center">
+            <div className="mb-8">
+              <h2 className="text-white text-xl font-medium mb-3">
+                💰 وعلشان مكسبك يكبر معانا 💰
+              </h2>
+              <p className="text-white text-sm">
+                وفرنا لك خصومات ومزايا بتكبر مع كل ترشيح ناجح
+              </p>
+            </div>
+
+            <div className="flex justify-center gap-12 my-12">
+              {/* 3% Discount */}
+              <div className="text-center">
+                <p className="text-[#ffcf57] text-lg font-bold mb-2">
+                  خصـــــــــــم
+                </p>
+                <p className="text-[#ffcf57] text-7xl font-bold leading-none">
+                  3%
+                </p>
+                <p className="text-white text-xs mt-3 max-w-[140px]">
+                  عن كل عميل من طرفك يتم ترشيحه وإتمام الشراء
+                </p>
+              </div>
+
+              {/* 5% Discount */}
+              <div className="text-center">
+                <p className="text-[#ffcf57] text-lg font-bold mb-2">
+                  خصـــــــــــم
+                </p>
+                <p className="text-[#ffcf57] text-7xl font-bold leading-none">
+                  5%
+                </p>
+                <p className="text-white text-base mt-3">على الوحدات الجديدة</p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <p className="text-white text-lg font-bold mb-2">
+                مكسبك من مكسبنا
+              </p>
+              <p className="text-white text-sm">
+                وشراكتنا مكملة معاك خطوة بخطوة
+              </p>
+            </div>
+          </div>
+        </Slide>
+
+        {/* Slide 8: Thank You */}
+        <Slide gradient>
+          <div className="relative h-[432px]">
+            <div className="px-8 h-full flex flex-col items-center justify-center">
+              <p className="text-white text-[101.923px] font-bold">شكراً</p>
+            </div>
+            <div className="flex items-center justify-center absolute bottom-[21px] left-0 right-0">
+              <ArxAndUniLogos />
+            </div>
+          </div>
+        </Slide>
+      </div>
+    </div>
+  );
+}
