@@ -1,7 +1,10 @@
+"use client";
+
 import ArxAndUniLogos from "@/components/icons/ArxAndUniLogos";
 import HeroLogo from "@/components/icons/heroLogo";
 import Slide from "@/components/Slide";
-import React from "react";
+import React, { useRef } from "react";
+import PrintButton from "@/components/PrintButton";
 
 // UNI Logo component for the slides
 const UniLogo = () => (
@@ -11,6 +14,7 @@ const UniLogo = () => (
 );
 
 export default function UniSeriesAdministrativePresentation() {
+  const contentRef = useRef<HTMLDivElement>(null);
   // Payment plan data
   const paymentData = [
     {
@@ -64,7 +68,12 @@ export default function UniSeriesAdministrativePresentation() {
         fontFamily: "SST Arabic, Arial, sans-serif",
       }}
     >
-      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+      <PrintButton contentRef={contentRef} />
+      <div
+        ref={contentRef}
+        id="print-content"
+        className="flex flex-col gap-8 max-w-4xl mx-auto print:gap-0"
+      >
         {/* Slide 1: Hero - UNI Series */}
         <Slide gradient>
           <div className="flex items-center justify-center w-full h-[407px]">

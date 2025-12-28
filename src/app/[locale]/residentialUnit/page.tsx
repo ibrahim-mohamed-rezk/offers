@@ -1,20 +1,88 @@
+"use client";
+
 import ArxAndUniLogos from "@/components/icons/ArxAndUniLogos";
 import HeroLogo from "@/components/icons/heroLogo";
 import Slide from "@/components/Slide";
-import React from "react";
+import React, { useRef } from "react";
+import PrintButton from "@/components/PrintButton";
 
 export default function UniSeriesResidentialPresentation() {
+  const contentRef = useRef<HTMLDivElement>(null);
   // Payment plan data - more rows as shown in Figma
   const paymentData = [
-    { id: 1, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 2, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 3, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 4, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 5, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 6, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 7, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 8, type: "قسط ربع سنوي", date: "05-03-2024", remaining: "266,250", discount: "0", net: "266,250" },
-    { id: 9, type: "قسط ربع سنوي", date: "01-12-2025", remaining: "266,250", discount: "31,300", net: "234,950", hasDiscount: true },
+    {
+      id: 1,
+      type: "قسط ربع سنوي",
+      date: "01-12-2025",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 2,
+      type: "قسط ربع سنوي",
+      date: "05-03-2024",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 3,
+      type: "قسط ربع سنوي",
+      date: "01-12-2025",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 4,
+      type: "قسط ربع سنوي",
+      date: "05-03-2024",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 5,
+      type: "قسط ربع سنوي",
+      date: "01-12-2025",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 6,
+      type: "قسط ربع سنوي",
+      date: "05-03-2024",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 7,
+      type: "قسط ربع سنوي",
+      date: "01-12-2025",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 8,
+      type: "قسط ربع سنوي",
+      date: "05-03-2024",
+      remaining: "266,250",
+      discount: "0",
+      net: "266,250",
+    },
+    {
+      id: 9,
+      type: "قسط ربع سنوي",
+      date: "01-12-2025",
+      remaining: "266,250",
+      discount: "31,300",
+      net: "234,950",
+      hasDiscount: true,
+    },
   ];
 
   return (
@@ -26,8 +94,12 @@ export default function UniSeriesResidentialPresentation() {
       }}
       dir="rtl"
     >
-      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
-        
+      <PrintButton contentRef={contentRef} />
+      <div
+        ref={contentRef}
+        id="print-content"
+        className="flex flex-col gap-8 max-w-4xl mx-auto print:gap-4"
+      >
         {/* Slide 1: Hero - UNI Series */}
         <Slide gradient>
           <div className="flex items-center justify-center w-full h-[407px]">
@@ -101,12 +173,24 @@ export default function UniSeriesResidentialPresentation() {
               <div className="mt-[25px] overflow-hidden">
                 {/* Table Header */}
                 <div className="bg-white/20 h-[33px] grid grid-cols-6 text-[10px] text-white font-medium">
-                  <div className="flex items-center justify-center border-l border-white/10">م</div>
-                  <div className="flex items-center justify-center border-l border-white/10">نوع القسط</div>
-                  <div className="flex items-center justify-center border-l border-white/10">تاريخ الاستحقاق</div>
-                  <div className="flex items-center justify-center border-l border-white/10">المبلغ المتبقي</div>
-                  <div className="flex items-center justify-center border-l border-white/10 text-[#ffcf57]">قيمة الخصم</div>
-                  <div className="flex items-center justify-center text-[9px]">الصافي بعد الخصم</div>
+                  <div className="flex items-center justify-center border-l border-white/10">
+                    م
+                  </div>
+                  <div className="flex items-center justify-center border-l border-white/10">
+                    نوع القسط
+                  </div>
+                  <div className="flex items-center justify-center border-l border-white/10">
+                    تاريخ الاستحقاق
+                  </div>
+                  <div className="flex items-center justify-center border-l border-white/10">
+                    المبلغ المتبقي
+                  </div>
+                  <div className="flex items-center justify-center border-l border-white/10 text-[#ffcf57]">
+                    قيمة الخصم
+                  </div>
+                  <div className="flex items-center justify-center text-[9px]">
+                    الصافي بعد الخصم
+                  </div>
                 </div>
 
                 {/* Table Body */}
@@ -118,12 +202,24 @@ export default function UniSeriesResidentialPresentation() {
                         index % 2 === 1 ? "bg-white/10" : ""
                       }`}
                     >
-                      <div className="flex items-center justify-center">{row.id}</div>
-                      <div className="flex items-center justify-center">{row.type}</div>
-                      <div className="flex items-center justify-center">{row.date}</div>
-                      <div className="flex items-center justify-center">{row.remaining}</div>
-                      <div className="flex items-center justify-center text-[#ffcf57]">{row.discount}</div>
-                      <div className="flex items-center justify-center">{row.net}</div>
+                      <div className="flex items-center justify-center">
+                        {row.id}
+                      </div>
+                      <div className="flex items-center justify-center">
+                        {row.type}
+                      </div>
+                      <div className="flex items-center justify-center">
+                        {row.date}
+                      </div>
+                      <div className="flex items-center justify-center">
+                        {row.remaining}
+                      </div>
+                      <div className="flex items-center justify-center text-[#ffcf57]">
+                        {row.discount}
+                      </div>
+                      <div className="flex items-center justify-center">
+                        {row.net}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -134,9 +230,15 @@ export default function UniSeriesResidentialPresentation() {
                     إجمالي الوحدة :
                   </div>
                   <div className="flex items-center justify-center"></div>
-                  <div className="flex items-center justify-center text-white font-medium">1,331,250</div>
-                  <div className="flex items-center justify-center text-[#ffcf57] font-bold">31,300</div>
-                  <div className="flex items-center justify-center text-white">1,277,750</div>
+                  <div className="flex items-center justify-center text-white font-medium">
+                    1,331,250
+                  </div>
+                  <div className="flex items-center justify-center text-[#ffcf57] font-bold">
+                    31,300
+                  </div>
+                  <div className="flex items-center justify-center text-white">
+                    1,277,750
+                  </div>
                 </div>
               </div>
             </div>
@@ -182,7 +284,10 @@ export default function UniSeriesResidentialPresentation() {
               </div>
               <div className="py-[12px] px-[18px]">
                 <p className="text-white text-[11px] text-right leading-[20px]">
-                  • اعمال تشطيب الكهرباء فى جميع الغرف و الريسبشن و المطبخ و الحمامات طبقا للرسومات و يشمل ( خراطيم - سلك سويدي - علب و مفاتيح و برايز شنايدر - قواطع شنايدر - لوحة توزيع - طبلون كهرباء 24 خط )
+                  • اعمال تشطيب الكهرباء فى جميع الغرف و الريسبشن و المطبخ و
+                  الحمامات طبقا للرسومات و يشمل ( خراطيم - سلك سويدي - علب و
+                  مفاتيح و برايز شنايدر - قواطع شنايدر - لوحة توزيع - طبلون
+                  كهرباء 24 خط )
                 </p>
               </div>
 
@@ -222,7 +327,8 @@ export default function UniSeriesResidentialPresentation() {
                 </div>
                 <div className="flex-1 py-[10px] px-[15px]">
                   <p className="text-white text-[10px] text-right">
-                    ( ماسورة بى فى سى 3 بوصة - مواسير حرارى تركى - كوع تركى 90 درجة )
+                    ( ماسورة بى فى سى 3 بوصة - مواسير حرارى تركى - كوع تركى 90
+                    درجة )
                   </p>
                 </div>
               </div>
@@ -235,7 +341,8 @@ export default function UniSeriesResidentialPresentation() {
                 </div>
                 <div className="flex-1 py-[10px] px-[15px]">
                   <p className="text-white text-[10px] text-right">
-                    ( HDF جيت + حوض تعليق + قاعدة معلقة + شطاف + خلاط - اكسسوارات )
+                    ( HDF جيت + حوض تعليق + قاعدة معلقة + شطاف + خلاط -
+                    اكسسوارات )
                   </p>
                 </div>
               </div>
@@ -287,9 +394,15 @@ export default function UniSeriesResidentialPresentation() {
               </div>
               <div className="py-[12px] px-[18px]">
                 <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>• توريد وتركيب رخام صناعى للمطبخ مع حليه المنيوم بسمك 3.5 سم + 1 متر ظهر</p>
+                  <p>
+                    • توريد وتركيب رخام صناعى للمطبخ مع حليه المنيوم بسمك 3.5 سم
+                    + 1 متر ظهر
+                  </p>
                   <p>• توريد و تركيب وزر سيراميك للغرف و الريسبشن</p>
-                  <p>• توريد و تركيب سيراميك حوائط و ارضيات كليوباترا 30 * 60 للحمامات و المطبخ و البلكونة</p>
+                  <p>
+                    • توريد و تركيب سيراميك حوائط و ارضيات كليوباترا 30 * 60
+                    للحمامات و المطبخ و البلكونة
+                  </p>
                 </div>
               </div>
 
@@ -301,16 +414,26 @@ export default function UniSeriesResidentialPresentation() {
               </div>
               <div className="py-[12px] px-[18px]">
                 <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>• اعمال تاسيس التكييفات نحاس ابو الهول 3/8 * 5/8 اسبليت مع توصيل الكهرباء والصرف حسب الرسم والتصميم</p>
-                  <p>• تاسيس الغاز توريد وتركيب ماسورة نحاس مع التوصيل من الرايزر حتي نقطة الاستلام من داخل الوحدة</p>
+                  <p>
+                    • اعمال تاسيس التكييفات نحاس ابو الهول 3/8 * 5/8 اسبليت مع
+                    توصيل الكهرباء والصرف حسب الرسم والتصميم
+                  </p>
+                  <p>
+                    • تاسيس الغاز توريد وتركيب ماسورة نحاس مع التوصيل من الرايزر
+                    حتي نقطة الاستلام من داخل الوحدة
+                  </p>
                 </div>
               </div>
 
               {/* Important Note */}
               <div className="py-[15px] px-[18px] border-t border-white/10">
-                <p className="text-[#ffcf57] text-[10px] mb-[8px]">* ملحوظة هامة</p>
+                <p className="text-[#ffcf57] text-[10px] mb-[8px]">
+                  * ملحوظة هامة
+                </p>
                 <p className="text-white text-[10px] text-right leading-[18px]">
-                  هذة الباقة لا تشمل الابواب و النجارة و السخانات الكهربائية و التكييفات و انما يتم احتسابها بالوحدة او حسب الطلب من العميل بشكل منفصل
+                  هذة الباقة لا تشمل الابواب و النجارة و السخانات الكهربائية و
+                  التكييفات و انما يتم احتسابها بالوحدة او حسب الطلب من العميل
+                  بشكل منفصل
                 </p>
               </div>
             </div>
@@ -321,7 +444,6 @@ export default function UniSeriesResidentialPresentation() {
         <Slide gradient>
           <div className="p-[14px]">
             <div className="bg-white/5 w-full mx-auto relative">
-              
               {/* Section: اعمال المعجون */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center mt-[20px]">
                 <span className="text-white text-[16px] font-medium">
@@ -330,7 +452,10 @@ export default function UniSeriesResidentialPresentation() {
               </div>
               <div className="py-[12px] px-[18px]">
                 <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>• تأسيس وتشطيب المعجون والدهانات ( جيوتن ) بالوان حسب اختيار العميل عبارة عن :</p>
+                  <p>
+                    • تأسيس وتشطيب المعجون والدهانات ( جيوتن ) بالوان حسب اختيار
+                    العميل عبارة عن :
+                  </p>
                   <p className="pr-[20px]">- سيلر مائى</p>
                   <p className="pr-[20px]">- عدد 3 سكينة معجون</p>
                   <p className="pr-[20px]">- عدد 3 اوجة دهان بلاستيك</p>
@@ -352,7 +477,8 @@ export default function UniSeriesResidentialPresentation() {
                 </div>
                 <div className="flex-1 py-[10px] px-[15px]">
                   <p className="text-white text-[10px] text-right">
-                    مع عمل بؤج لاماكن الاضاءة والتكييفات والاسبوتات حسب الرسم والتصميم
+                    مع عمل بؤج لاماكن الاضاءة والتكييفات والاسبوتات حسب الرسم
+                    والتصميم
                   </p>
                 </div>
               </div>
@@ -378,7 +504,11 @@ export default function UniSeriesResidentialPresentation() {
               </div>
               <div className="py-[12px] px-[18px]">
                 <div className="text-white text-[11px] text-right leading-[22px]">
-                  <p>• توريد وتركيب وحدات اضاءة - اسبوتات والمطبخ والحمامات والطرقة والريسبشن فقط لا تشمل الغرف ( عدد الوحدات حسب التصميم المقدم من الشركة ) مع تركيب ال LED</p>
+                  <p>
+                    • توريد وتركيب وحدات اضاءة - اسبوتات والمطبخ والحمامات
+                    والطرقة والريسبشن فقط لا تشمل الغرف ( عدد الوحدات حسب
+                    التصميم المقدم من الشركة ) مع تركيب ال LED
+                  </p>
                 </div>
               </div>
 
@@ -389,10 +519,14 @@ export default function UniSeriesResidentialPresentation() {
                   <div className="flex flex-col gap-[11px] items-start w-[150px]">
                     <div className="flex gap-[4px] items-end text-white">
                       <span className="text-[14px] font-bold">7,667</span>
-                      <span className="text-[9.977px]">جنيه مصرى لكل متر مربع</span>
+                      <span className="text-[9.977px]">
+                        جنيه مصرى لكل متر مربع
+                      </span>
                     </div>
                     <div className="flex gap-[2px] items-start text-white text-right">
-                      <span className="text-[9px] font-light">بالاضافه الى نسبة الاشراف</span>
+                      <span className="text-[9px] font-light">
+                        بالاضافه الى نسبة الاشراف
+                      </span>
                       <span className="text-[10px] font-medium">15%</span>
                     </div>
                   </div>
@@ -408,7 +542,9 @@ export default function UniSeriesResidentialPresentation() {
                 <div className="bg-[#ffe9a6] h-[47px] w-full flex justify-between items-center px-[16px]">
                   <div className="flex gap-[4px] items-end text-black">
                     <span className="text-[14px] font-bold">8,000</span>
-                    <span className="text-[9.977px]">جنيه مصرى لكل متر مربع</span>
+                    <span className="text-[9.977px]">
+                      جنيه مصرى لكل متر مربع
+                    </span>
                   </div>
                   <span className="text-black text-[10.077px] font-medium">
                     يصبح الاجمالي
@@ -424,9 +560,15 @@ export default function UniSeriesResidentialPresentation() {
                   </span>
                 </div>
                 <div className="w-[400px] text-white text-[9px] text-right leading-[18px]">
-                  <p>• الدفعات تكون بناءا على المراحل المعتمده مع العميل و تكون مقدما فى كل مرحله.</p>
+                  <p>
+                    • الدفعات تكون بناءا على المراحل المعتمده مع العميل و تكون
+                    مقدما فى كل مرحله.
+                  </p>
                   <p>• مدة التشطيب : من شهر و نصف الى شهرين</p>
-                  <p>• الحساب بالفواتير الفعليه لكل بند بالاضافه الى 15% نسبة الاشراف.</p>
+                  <p>
+                    • الحساب بالفواتير الفعليه لكل بند بالاضافه الى 15% نسبة
+                    الاشراف.
+                  </p>
                 </div>
               </div>
             </div>
@@ -434,7 +576,7 @@ export default function UniSeriesResidentialPresentation() {
         </Slide>
 
         {/* Slide 7: Referral Benefits */}
-       <Slide gradient>
+        <Slide gradient>
           <div className="py-12 px-8 text-center">
             <div className="mb-8">
               <h2 className="text-white text-xl font-medium mb-3">
