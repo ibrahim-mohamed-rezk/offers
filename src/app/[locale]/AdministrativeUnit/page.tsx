@@ -130,6 +130,7 @@ export default function UniSeriesAdministrativePresentation() {
         background: "#444",
         fontFamily: "SST Arabic, Arial, sans-serif",
       }}
+      dir="rtl"
     >
       <PrintButton contentRef={contentRef} />
       <div
@@ -308,10 +309,10 @@ export default function UniSeriesAdministrativePresentation() {
             <div className="bg-white/5 w-full mx-auto relative">
               {/* Header with title and UNI logo */}
               <div className="flex justify-between items-start py-[20px] px-[18px]">
-                <UniLogo />
                 <h2 className="text-white text-[20px] font-bold text-right">
                   باقة التشطيب ( سوبرلوكس ) الوحدة الادارية
                 </h2>
+                <UniLogo />
               </div>
 
               {/* Section: اعمال السباكة - with 2-column table */}
@@ -321,6 +322,13 @@ export default function UniSeriesAdministrativePresentation() {
                 </span>
               </div>
               <div className="flex">
+                {/* Left side - small column with additional items */}
+                <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p>• خلاط جروهى - حوض معلق</p>
+                  <p>• سيفون ارضى المانى</p>
+                  <p>• فلتر مياه 3 مراحل</p>
+                  <p>• عداد مياه</p>
+                </div>
                 {/* Right side - main content (larger) */}
                 <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
                   <p>
@@ -335,13 +343,6 @@ export default function UniSeriesAdministrativePresentation() {
                   <p>• توريد وتركيب سخان كهرباء 50 لتر اوليمبيك او ما يعادلة</p>
                   <p>• توريد و تركيب خلاط حوض GROHE او ما يعادلة</p>
                   <p>• توريد وتركيب حوض رخام صناعى بالكاونتر</p>
-                </div>
-                {/* Left side - small column with additional items */}
-                <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
-                  <p>• خلاط جروهى - حوض معلق</p>
-                  <p>• سيفون ارضى المانى</p>
-                  <p>• فلتر مياه 3 مراحل</p>
-                  <p>• عداد مياه</p>
                 </div>
               </div>
 
@@ -421,6 +422,10 @@ export default function UniSeriesAdministrativePresentation() {
                 </span>
               </div>
               <div className="flex">
+                {/* Left side - small column */}
+                <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p>• كشافات ليد 60*60</p>
+                </div>
                 {/* Right side - main content */}
                 <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
                   <p>
@@ -433,10 +438,6 @@ export default function UniSeriesAdministrativePresentation() {
                     المعدنى للمكتب
                   </p>
                 </div>
-                {/* Left side - small column */}
-                <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
-                  <p>• كشافات ليد 60*60</p>
-                </div>
               </div>
 
               {/* Section: اعمال الكهرباء ( الاجهزة والتشطيبات ) */}
@@ -446,6 +447,11 @@ export default function UniSeriesAdministrativePresentation() {
                 </span>
               </div>
               <div className="flex">
+                {/* Left side - small column */}
+                <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
+                  <p>• عدد 2 اسبوت ليد</p>
+                  <p>• مراية ليد</p>
+                </div>
                 {/* Right side - main content */}
                 <div className="flex-1 py-[12px] px-[18px] text-white text-[10px] text-right leading-[20px]">
                   <p>
@@ -457,11 +463,6 @@ export default function UniSeriesAdministrativePresentation() {
                   </p>
                   <p>• توريد وتركيب شفاط حمام توشيبا او ما يعادلة</p>
                   <p>• توريد وتركيب جرس باب + انتركم صوت او ما يعادلة</p>
-                </div>
-                {/* Left side - small column */}
-                <div className="w-[150px] bg-white/5 border-r border-white/10 py-[12px] px-[10px] text-white text-[9px] text-right leading-[18px]">
-                  <p>• عدد 2 اسبوت ليد</p>
-                  <p>• مراية ليد</p>
                 </div>
               </div>
 
