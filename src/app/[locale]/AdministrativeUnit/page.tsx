@@ -62,7 +62,7 @@ export default function UniSeriesAdministrativePresentation() {
 
   return (
     <div
-      className="min-h-screen py-8 px-4"
+      className="min-h-screen py-8 px-4 print:p-0"
       style={{
         background: "#444",
         fontFamily: "SST Arabic, Arial, sans-serif",
@@ -72,7 +72,7 @@ export default function UniSeriesAdministrativePresentation() {
       <div
         ref={contentRef}
         id="print-content"
-        className="flex flex-col gap-8 max-w-4xl mx-auto print:gap-0"
+        className="flex flex-col gap-8 max-w-4xl mx-auto print:gap-0 print:mx-0 print:max-w-none"
       >
         {/* Slide 1: Hero - UNI Series */}
         <Slide gradient>

@@ -18,11 +18,10 @@ export async function GET(req: NextRequest) {
     });
     const page = await browser.newPage();
 
-    // Set viewport to match the design width roughly, or A4 Landscape ratio
-    // A4 landscape is approx 1123 x 794 pixels at 96 DPI
+    // Set viewport to match the slide dimensions exactly
     await page.setViewport({
-      width: 1123,
-      height: 794,
+      width: 596,
+      height: 432,
       deviceScaleFactor: 2, // High resolution for better quality
     });
 
@@ -33,8 +32,8 @@ export async function GET(req: NextRequest) {
 
     // Generate PDF
     const pdfBuffer = await page.pdf({
-      format: "A4",
-      landscape: false,
+      width: "596px",
+      height: "432px",
       printBackground: true,
       margin: {
         top: 0,
@@ -42,8 +41,8 @@ export async function GET(req: NextRequest) {
         bottom: 0,
         left: 0,
       },
-      // Ensure we capture the print styles
-      preferCSSPageSize: true, 
+      // Ensure we capture the print styles and respect CSS @page rules
+      preferCSSPageSize: true,
     });
 
     await browser.close();

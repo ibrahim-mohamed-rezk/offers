@@ -37,3 +37,65 @@
 .font-sst-arabic {
   font-family: "SST Arabic";
 }
+
+/* Print styles for slide-based presentations */
+@media print {
+  /* Page configuration to fit slide size */
+  @page {
+    size: 596px 432px; /* Match the slide dimensions exactly */
+    margin: 0;
+  }
+
+  /* Global print adjustments */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  /* Hide print button and non-content elements */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent;
+  }
+
+  /* Remove all spacing from the parent wrapper */
+  body > div {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Container styles for print */
+  #print-content {
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Make each slide appear on its own page with strict dimensions */
+  #print-content > div {
+    display: block;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    width: 596px !important;
+    height: 432px !important;
+    min-height: 432px !important;
+    max-height: 432px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Prevent page break on the last slide */
+  #print-content > div:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}
