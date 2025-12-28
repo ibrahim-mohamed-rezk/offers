@@ -61,14 +61,14 @@ export default function GeneratePDFPage() {
     return null;
   };
 
-  const handleGeneratePDF = async (clientName: string) => {
+  const handleGeneratePDF = async (clientName: string, unit:string) => {
     setGenerating(clientName);
     const blob = await generatePDFBlob(clientName);
     if (blob) {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${clientName}-offer.pdf`;
+      a.download = `${clientName}-${unit}.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -226,7 +226,7 @@ export default function GeneratePDFPage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => handleGeneratePDF(client.اسم_العميل)}
+                  onClick={() => handleGeneratePDF(client.اسم_العميل, client.الوحدات[0].النموذج)}
                   disabled={generating === client.اسم_العميل || isGeneratingAll}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     generating === client.اسم_العميل || isGeneratingAll
