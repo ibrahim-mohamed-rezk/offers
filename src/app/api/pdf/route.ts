@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     // Generate PDF
     const pdfBuffer = await page.pdf({
       format: "A4",
-      landscape: true,
+      landscape: false,
       printBackground: true,
       margin: {
         top: 0,
