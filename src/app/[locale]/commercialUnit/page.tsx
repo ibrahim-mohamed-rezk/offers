@@ -10,54 +10,82 @@ import PrintButton from "@/components/PrintButton";
 
 export default function UniSeriesPresentation() {
   const contentRef = useRef<HTMLDivElement>(null);
+  // Customer data
+  const customerName = "الهام عوض احمد العزبى";
+  const unitCode = "8";
+  const unitModel = "محل (9)";
+
   // Payment plan data
   const paymentData = [
     {
       id: 1,
       type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
+      date: "-",
+      remaining: "61,000",
       discount: "0",
-      net: "266,250",
+      net: "61,000",
     },
     {
       id: 2,
       type: "قسط ربع سنوي",
-      date: "05-03-2024",
-      remaining: "266,250",
+      date: "-",
+      remaining: "61,000",
       discount: "0",
-      net: "266,250",
+      net: "61,000",
     },
     {
       id: 3,
       type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
+      date: "-",
+      remaining: "61,000",
       discount: "0",
-      net: "266,250",
+      net: "61,000",
     },
     {
       id: 4,
       type: "قسط ربع سنوي",
-      date: "05-03-2024",
-      remaining: "266,250",
+      date: "-",
+      remaining: "61,000",
       discount: "0",
-      net: "266,250",
+      net: "61,000",
     },
     {
       id: 5,
       type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
-      discount: "31,300",
-      net: "266,250",
-      hasDiscount: true,
+      date: "-",
+      remaining: "59,400",
+      discount: "0",
+      net: "59,400",
+    },
+    {
+      id: 6,
+      type: "قسط ربع سنوي",
+      date: "-",
+      remaining: "58,400",
+      discount: "0",
+      net: "58,400",
+    },
+    {
+      id: 7,
+      type: "قسط ربع سنوي",
+      date: "-",
+      remaining: "57,400",
+      discount: "0",
+      net: "57,400",
+    },
+    {
+      id: 8,
+      type: "قسط ربع سنوي",
+      date: "-",
+      remaining: "50,800",
+      discount: "0",
+      net: "50,800",
     },
   ];
 
   return (
     <div
-      className="min-h-screen py-8 px-4"
+      className="min-h-screen py-8 px-4 print:py-0 print:px-0"
       style={{
         background: "#444",
         fontFamily: "SST Arabic, Arial, sans-serif",
@@ -117,24 +145,20 @@ export default function UniSeriesPresentation() {
                   <div className="flex gap-2 items-center">
                     <span className="text-[#ffcf57]">اسم العميل:</span>
                     <span className="text-white font-bold">
-                      سوسو محمد فكرى محمد شرف
+                      {customerName}
                     </span>
                   </div>
                   <div className="flex gap-2 items-center">
-                    <span className="text-[#ffcf57]">القطعة:</span>
+                    <span className="text-[#ffcf57]">الكود:</span>
                     <span className="text-white font-medium">
-                      يونى (8) شمال الجامعة القطعه رقم (27)
+                      {unitCode}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3">
                   <div className="flex gap-2 items-center">
                     <span className="text-[#ffcf57]">النموذج:</span>
-                    <span className="text-white font-bold">محل (5)/(6)</span>
-                  </div>
-                  <div className="flex gap-2 items-center">
-                    <span className="text-[#ffcf57]">الدور:</span>
-                    <span className="text-white font-bold">الميزانين</span>
+                    <span className="text-white font-bold">{unitModel}</span>
                   </div>
                 </div>
               </div>
@@ -193,12 +217,12 @@ export default function UniSeriesPresentation() {
                   </div>
                   <div className="text-center"></div>
                   <div className="text-center text-white font-medium">
-                    1,331,250
+                    470,000
                   </div>
                   <div className="text-center text-[#ffcf57] font-bold">
-                    31,300
+                    0
                   </div>
-                  <div className="text-center text-white">1,277,750</div>
+                  <div className="text-center text-white">470,000</div>
                 </div>
               </div>
             </div>
