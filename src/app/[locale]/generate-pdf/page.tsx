@@ -93,7 +93,7 @@ export default function GeneratePDFPage() {
       const blob = await generatePDFBlob(client.اسم_العميل);
       
       if (blob) {
-        zip.file(`${client.اسم_العميل}-offer.pdf`, blob);
+        zip.file(`${client.اسم_العميل}-${client.الوحدات[0].النموذج}.pdf`, blob);
       }
       
       setProgress(i + 1);
