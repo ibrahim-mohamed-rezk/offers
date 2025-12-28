@@ -16,22 +16,56 @@ export default function UniSeriesPresentation() {
   const clientName = searchParams.get("client");
 
   // Load client data from JSON
+  // Load client data from JSON
   const clientData = useMemo(() => {
     if (!clientName) {
       // Default data if no client specified
       return {
         customerName: "الهام عوض احمد العزبى",
-        unitCode: "8",
-        unitModel: "محل (9)",
-        installments: [
-          { id: 1, amount: 61000 },
-          { id: 2, amount: 61000 },
-          { id: 3, amount: 61000 },
-          { id: 4, amount: 61000 },
-          { id: 5, amount: 59400 },
-          { id: 6, amount: 58400 },
-          { id: 7, amount: 57400 },
-          { id: 8, amount: 50800 },
+        units: [
+          {
+            unitCode: "8",
+            unitModel: "محل (9)",
+            floor: "-",
+            installments: [
+              {
+                id: 1,
+                type: "قسط ربع سنوي",
+                date: "-",
+                remaining: "61,000",
+                discount: "0",
+                net: "61,000",
+                amount: 61000,
+              },
+              {
+                id: 2,
+                type: "قسط ربع سنوي",
+                date: "-",
+                remaining: "61,000",
+                discount: "0",
+                net: "61,000",
+                amount: 61000,
+              },
+              {
+                id: 3,
+                type: "قسط ربع سنوي",
+                date: "-",
+                remaining: "61,000",
+                discount: "0",
+                net: "61,000",
+                amount: 61000,
+              },
+              {
+                id: 4,
+                type: "قسط ربع سنوي",
+                date: "-",
+                remaining: "61,000",
+                discount: "0",
+                net: "61,000",
+                amount: 61000,
+              },
+            ],
+          },
         ],
       };
     }
@@ -40,44 +74,33 @@ export default function UniSeriesPresentation() {
       (c) => c.اسم_العميل === clientName
     );
 
-    if (!client || !client.الوحدات[0]) {
+    if (!client || !client.الوحدات) {
       return {
         customerName: clientName,
-        unitCode: "-",
-        unitModel: "-",
-        installments: [],
+        units: [],
       };
     }
 
-    const unit = client.الوحدات[0];
     return {
       customerName: client.اسم_العميل,
-      unitCode: (unit as any).الكود || "-",
-      unitModel: unit.النموذج,
-      floor: (unit as any).الدور || "-",
-      installments: unit.الاقساط.map((inst) => ({
-        id: inst.رقم_القسط,
-        amount: inst.الصافي_بعد_الخصم,
+      units: client.الوحدات.map((unit) => ({
+        unitCode: (unit as any).الكود || "-",
+        unitModel: unit.النموذج,
+        floor: (unit as any).الدور || "-",
+        installments: unit.الاقساط.map((inst) => ({
+          id: inst.رقم_القسط,
+          type: "قسط ربع سنوي",
+          date: "-",
+          remaining: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
+          discount: "0",
+          net: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
+          amount: inst.الصافي_بعد_الخصم,
+        })),
       })),
     };
   }, [clientName]);
 
-  const { customerName, floor, unitCode, unitModel } = clientData;
-
-  // Format payment data
-  const paymentData = clientData.installments.map((inst) => ({
-    id: inst.id,
-    type: "قسط ربع سنوي",
-    date: "-",
-    remaining: inst.amount.toLocaleString("en-US"),
-    discount: "0",
-    net: inst.amount.toLocaleString("en-US"),
-  }));
-
-  // Calculate totals
-  const totalRemaining = clientData.installments
-    .reduce((sum, inst) => sum + inst.amount, 0)
-    .toLocaleString("en-US");
+  const { customerName, units } = clientData;
 
   return (
     <div
@@ -127,97 +150,117 @@ export default function UniSeriesPresentation() {
           </div>
         </Slide>
 
-        {/* Slide 3: Early Payment Plan */}
-        <Slide gradient>
-          <div className="p-[13px]">
-            <div className="border bg-white/5 border-white/5 ">
-              <h2 className="text-white mt-[45px] text-lg font-bold text-center mb-6">
-                كشف السداد المبكر - Early Payment Plan
-              </h2>
+        {/* Slide 3: Early Payment Plan (Per Unit) */}
+        {units.map((unit, index) => {
+          const totalRemaining = unit.installments
+            .reduce((sum, inst) => sum + (inst.amount || 0), 0)
+            .toLocaleString("en-US");
 
-              {/* Customer Info */}
-              <div className="flex px-[25px] justify-between gap-8 mt-[53px] text-sm">
-                <div className="flex flex-col gap-3">
-                  <div className="flex gap-2 items-center">
-                    <span className="text-[#ffcf57]">اسم العميل:</span>
-                    <span className="text-white font-bold">{customerName}</span>
-                  </div>
-                  <div className="flex gap-2 items-center">
-                    <span className="text-[#ffcf57]">الكود:</span>
-                    <span className="text-white font-medium">{unitCode}</span>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <div className="flex gap-2 items-center">
-                    <span className="text-[#ffcf57]">النموذج:</span>
-                    <span className="text-white font-bold">{unitModel}</span>
-                  </div>
-                   <div className="flex gap-[5px] items-center">
-                    <span className="text-[#ffcf57]">الدور:</span>
-                    <span className="text-white font-bold">{floor}</span>
-                  </div>
-                </div>
-              </div>
+          return (
+            <Slide key={index} gradient>
+              <div className="p-[13px]">
+                <div className="border bg-white/5 border-white/5 ">
+                  <h2 className="text-white mt-[45px] text-lg font-bold text-center mb-6">
+                    كشف السداد المبكر - Early Payment Plan
+                  </h2>
 
-              {/* Payment Table */}
-              <div className="bg-white/5 mt-[40px] overflow-hidden">
-                {/* Table Header */}
-                <div className="bg-white/20 grid border border-white/5 grid-cols-6 gap-2  text-xs text-white font-medium">
-                  <div className="text-center border-l border-white/5 h-full py-2  ">
-                    م
-                  </div>
-                  <div className="text-center border-l border-white/5 h-full py-2 ">
-                    نوع القسط
-                  </div>
-                  <div className="text-center border-l border-white/5 h-full py-2 ">
-                    تاريخ الاستحقاق
-                  </div>
-                  <div className="text-center border-l border-white/5 h-full py-2 ">
-                    المبلغ المتبقي
-                  </div>
-                  <div className="text-center text-[#ffcf57] border-l border-white/5 h-full py-2 ">
-                    قيمة الخصم
-                  </div>
-                  <div className="text-center text-nowrap py-2 ps-1 text-[11px] ">
-                    الصافي بعد الخصم
-                  </div>
-                </div>
-
-                {/* Table Rows */}
-                {paymentData.map((row, index) => (
-                  <div
-                    key={row.id}
-                    className={`grid grid-cols-6 gap-2 py-2 px-3 text-xs text-white ${
-                      index % 2 === 1 ? "bg-white/10" : ""
-                    }`}
-                  >
-                    <div className="text-center">{row.id}</div>
-                    <div className="text-right">{row.type}</div>
-                    <div className="text-center">{row.date}</div>
-                    <div className="text-center">{row.remaining}</div>
-                    <div className="text-center text-[#ffcf57]">
-                      {row.discount}
+                  {/* Customer Info */}
+                  <div className="flex px-[25px] justify-between gap-8 mt-[53px] text-sm">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex gap-2 items-center">
+                        <span className="text-[#ffcf57]">اسم العميل:</span>
+                        <span className="text-white font-bold">
+                          {customerName}
+                        </span>
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <span className="text-[#ffcf57]">الكود:</span>
+                        <span className="text-white font-medium">
+                          {unit.unitCode}
+                        </span>
+                      </div>
                     </div>
-                    <div className="text-center">{row.net}</div>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex gap-2 items-center">
+                        <span className="text-[#ffcf57]">النموذج:</span>
+                        <span className="text-white font-bold">
+                          {unit.unitModel}
+                        </span>
+                      </div>
+                      <div className="flex gap-[5px] items-center">
+                        <span className="text-[#ffcf57]">الدور:</span>
+                        <span className="text-white font-bold">
+                          {unit.floor}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                ))}
 
-                {/* Total Row */}
-                <div className="grid grid-cols-6 gap-2 py-3 px-3 text-xs border-t border-white/20">
-                  <div className="col-span-2 text-white font-medium text-right">
-                    إجمالي الوحدة :
+                  {/* Payment Table */}
+                  <div className="bg-white/5 mt-[40px] overflow-hidden">
+                    {/* Table Header */}
+                    <div className="bg-white/20 grid border border-white/5 grid-cols-6 gap-2  text-xs text-white font-medium">
+                      <div className="text-center border-l border-white/5 h-full py-2  ">
+                        م
+                      </div>
+                      <div className="text-center border-l border-white/5 h-full py-2 ">
+                        نوع القسط
+                      </div>
+                      <div className="text-center border-l border-white/5 h-full py-2 ">
+                        تاريخ الاستحقاق
+                      </div>
+                      <div className="text-center border-l border-white/5 h-full py-2 ">
+                        المبلغ المتبقي
+                      </div>
+                      <div className="text-center text-[#ffcf57] border-l border-white/5 h-full py-2 ">
+                        قيمة الخصم
+                      </div>
+                      <div className="text-center text-nowrap py-2 ps-1 text-[11px] ">
+                        الصافي بعد الخصم
+                      </div>
+                    </div>
+
+                    {/* Table Rows */}
+                    {unit.installments.map((row, index) => (
+                      <div
+                        key={row.id}
+                        className={`grid grid-cols-6 gap-2 py-2 px-3 text-xs text-white ${
+                          index % 2 === 1 ? "bg-white/10" : ""
+                        }`}
+                      >
+                        <div className="text-center">{row.id}</div>
+                        <div className="text-right">{row.type}</div>
+                        <div className="text-center">{row.date}</div>
+                        <div className="text-center">{row.remaining}</div>
+                        <div className="text-center text-[#ffcf57]">
+                          {row.discount}
+                        </div>
+                        <div className="text-center">{row.net}</div>
+                      </div>
+                    ))}
+
+                    {/* Total Row */}
+                    <div className="grid grid-cols-6 gap-2 py-3 px-3 text-xs border-t border-white/20">
+                      <div className="col-span-2 text-white font-medium text-right">
+                        إجمالي الوحدة :
+                      </div>
+                      <div className="text-center"></div>
+                      <div className="text-center text-white font-medium">
+                        {totalRemaining}
+                      </div>
+                      <div className="text-center text-[#ffcf57] font-bold">
+                        0
+                      </div>
+                      <div className="text-center text-white">
+                        {totalRemaining}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-center"></div>
-                  <div className="text-center text-white font-medium">
-                    470,000
-                  </div>
-                  <div className="text-center text-[#ffcf57] font-bold">0</div>
-                  <div className="text-center text-white">470,000</div>
                 </div>
               </div>
-            </div>
-          </div>
-        </Slide>
+            </Slide>
+          );
+        })}
 
         {/* Slide 4: Finishing Offers Intro */}
         <Slide gradient>
