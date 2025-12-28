@@ -53,10 +53,17 @@
     color-adjust: exact;
   }
 
-  /* Hide print button and non-content elements */
-  body {
+  /* Force html and body constraints */
+  html, body {
     margin: 0 !important;
     padding: 0 !important;
+    overflow: hidden !important;
+    width: 596px !important;
+    height: auto !important;
+  }
+
+  /* Hide print button and non-content elements */
+  body {
     background: transparent;
   }
 
@@ -64,6 +71,9 @@
   body > div {
     margin: 0 !important;
     padding: 0 !important;
+    display: inline !important;
+    height: auto !important;
+    overflow: hidden !important;
   }
 
   /* Container styles for print */
@@ -72,14 +82,20 @@
     margin: 0 !important;
     padding: 0 !important;
     max-width: none !important;
+    display: inline !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide anything after print-content */
+  #print-content ~ * {
+    display: none !important;
   }
 
   /* Make each slide appear on its own page with strict dimensions */
   #print-content > div {
     display: block;
-    page-break-after: always;
     page-break-inside: avoid;
-    break-after: page;
     break-inside: avoid;
     margin: 0 !important;
     margin-left: 0 !important;
@@ -91,11 +107,20 @@
     max-height: 432px !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    orphans: 1;
+    widows: 1;
   }
 
-  /* Prevent page break on the last slide */
+  /* Add page break after all slides EXCEPT the last one */
+  #print-content > div:not(:last-child) {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  /* Ensure NO page break after the last slide */
   #print-content > div:last-child {
-    page-break-after: avoid;
-    break-after: avoid;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    margin-bottom: 0 !important;
   }
 }

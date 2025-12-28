@@ -5,83 +5,78 @@ import HeroLogo from "@/components/icons/heroLogo";
 import UniLogo from "@/components/icons/UniLogo";
 import SectionHeader from "@/components/SectionHeader";
 import Slide from "@/components/Slide";
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import PrintButton from "@/components/PrintButton";
+import { useSearchParams } from "next/navigation";
+import customersData from "@/libs/data/customers_data.json";
 
 export default function UniSeriesPresentation() {
   const contentRef = useRef<HTMLDivElement>(null);
-  // Customer data
-  const customerName = "الهام عوض احمد العزبى";
-  const unitCode = "8";
-  const unitModel = "محل (9)";
+  const searchParams = useSearchParams();
+  const clientName = searchParams.get("client");
 
-  // Payment plan data
-  const paymentData = [
-    {
-      id: 1,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "61,000",
-      discount: "0",
-      net: "61,000",
-    },
-    {
-      id: 2,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "61,000",
-      discount: "0",
-      net: "61,000",
-    },
-    {
-      id: 3,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "61,000",
-      discount: "0",
-      net: "61,000",
-    },
-    {
-      id: 4,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "61,000",
-      discount: "0",
-      net: "61,000",
-    },
-    {
-      id: 5,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "59,400",
-      discount: "0",
-      net: "59,400",
-    },
-    {
-      id: 6,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "58,400",
-      discount: "0",
-      net: "58,400",
-    },
-    {
-      id: 7,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "57,400",
-      discount: "0",
-      net: "57,400",
-    },
-    {
-      id: 8,
-      type: "قسط ربع سنوي",
-      date: "-",
-      remaining: "50,800",
-      discount: "0",
-      net: "50,800",
-    },
-  ];
+  // Load client data from JSON
+  const clientData = useMemo(() => {
+    if (!clientName) {
+      // Default data if no client specified
+      return {
+        customerName: "الهام عوض احمد العزبى",
+        unitCode: "8",
+        unitModel: "محل (9)",
+        installments: [
+          { id: 1, amount: 61000 },
+          { id: 2, amount: 61000 },
+          { id: 3, amount: 61000 },
+          { id: 4, amount: 61000 },
+          { id: 5, amount: 59400 },
+          { id: 6, amount: 58400 },
+          { id: 7, amount: 57400 },
+          { id: 8, amount: 50800 },
+        ],
+      };
+    }
+
+    const client = customersData.العملاء.find(
+      (c) => c.اسم_العميل === clientName
+    );
+
+    if (!client || !client.الوحدات[0]) {
+      return {
+        customerName: clientName,
+        unitCode: "-",
+        unitModel: "-",
+        installments: [],
+      };
+    }
+
+    const unit = client.الوحدات[0];
+    return {
+      customerName: client.اسم_العميل,
+      unitCode: (unit as any).الكود || "-",
+      unitModel: unit.النموذج,
+      installments: unit.الاقساط.map((inst) => ({
+        id: inst.رقم_القسط,
+        amount: inst.الصافي_بعد_الخصم,
+      })),
+    };
+  }, [clientName]);
+
+  const { customerName, unitCode, unitModel } = clientData;
+
+  // Format payment data
+  const paymentData = clientData.installments.map((inst) => ({
+    id: inst.id,
+    type: "قسط ربع سنوي",
+    date: "-",
+    remaining: inst.amount.toLocaleString("en-US"),
+    discount: "0",
+    net: inst.amount.toLocaleString("en-US"),
+  }));
+
+  // Calculate totals
+  const totalRemaining = clientData.installments
+    .reduce((sum, inst) => sum + inst.amount, 0)
+    .toLocaleString("en-US");
 
   return (
     <div
@@ -144,15 +139,11 @@ export default function UniSeriesPresentation() {
                 <div className="flex flex-col gap-3">
                   <div className="flex gap-2 items-center">
                     <span className="text-[#ffcf57]">اسم العميل:</span>
-                    <span className="text-white font-bold">
-                      {customerName}
-                    </span>
+                    <span className="text-white font-bold">{customerName}</span>
                   </div>
                   <div className="flex gap-2 items-center">
                     <span className="text-[#ffcf57]">الكود:</span>
-                    <span className="text-white font-medium">
-                      {unitCode}
-                    </span>
+                    <span className="text-white font-medium">{unitCode}</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3">
@@ -199,11 +190,7 @@ export default function UniSeriesPresentation() {
                     <div className="text-right">{row.type}</div>
                     <div className="text-center">{row.date}</div>
                     <div className="text-center">{row.remaining}</div>
-                    <div
-                      className={`text-center ${
-                        row.hasDiscount ? "text-[#ffcf57]" : "text-[#ffcf57]"
-                      }`}
-                    >
+                    <div className="text-center text-[#ffcf57]">
                       {row.discount}
                     </div>
                     <div className="text-center">{row.net}</div>
@@ -219,9 +206,7 @@ export default function UniSeriesPresentation() {
                   <div className="text-center text-white font-medium">
                     470,000
                   </div>
-                  <div className="text-center text-[#ffcf57] font-bold">
-                    0
-                  </div>
+                  <div className="text-center text-[#ffcf57] font-bold">0</div>
                   <div className="text-center text-white">470,000</div>
                 </div>
               </div>

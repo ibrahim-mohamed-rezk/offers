@@ -3,87 +3,156 @@
 import ArxAndUniLogos from "@/components/icons/ArxAndUniLogos";
 import HeroLogo from "@/components/icons/heroLogo";
 import Slide from "@/components/Slide";
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import PrintButton from "@/components/PrintButton";
+import { useSearchParams } from "next/navigation";
+import apartmentsData from "@/libs/data/apartments_data.json";
 
 export default function UniSeriesResidentialPresentation() {
   const contentRef = useRef<HTMLDivElement>(null);
-  // Payment plan data - more rows as shown in Figma
-  const paymentData = [
-    {
-      id: 1,
-      type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 2,
-      type: "قسط ربع سنوي",
-      date: "05-03-2024",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 3,
-      type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 4,
-      type: "قسط ربع سنوي",
-      date: "05-03-2024",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 5,
-      type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 6,
-      type: "قسط ربع سنوي",
-      date: "05-03-2024",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 7,
-      type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 8,
-      type: "قسط ربع سنوي",
-      date: "05-03-2024",
-      remaining: "266,250",
-      discount: "0",
-      net: "266,250",
-    },
-    {
-      id: 9,
-      type: "قسط ربع سنوي",
-      date: "01-12-2025",
-      remaining: "266,250",
-      discount: "31,300",
-      net: "234,950",
-      hasDiscount: true,
-    },
-  ];
+  const searchParams = useSearchParams();
+  const clientName = searchParams.get("client");
+
+  // Load client data from JSON
+  const clientData = useMemo(() => {
+    if (!clientName) {
+      // Default data if no client specified
+      return {
+        customerName: "سوسو محمد فكرى محمد شرف",
+        unitCode: "27",
+        unitModel: "محل (5)/(6)",
+        floor: "الميزانين",
+        installments: [
+          {
+            id: 1,
+            type: "قسط ربع سنوي",
+            date: "01-12-2025",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 2,
+            type: "قسط ربع سنوي",
+            date: "05-03-2024",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 3,
+            type: "قسط ربع سنوي",
+            date: "01-12-2025",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 4,
+            type: "قسط ربع سنوي",
+            date: "05-03-2024",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 5,
+            type: "قسط ربع سنوي",
+            date: "01-12-2025",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 6,
+            type: "قسط ربع سنوي",
+            date: "05-03-2024",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 7,
+            type: "قسط ربع سنوي",
+            date: "01-12-2025",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 8,
+            type: "قسط ربع سنوي",
+            date: "05-03-2024",
+            remaining: "266,250",
+            discount: "0",
+            net: "266,250",
+            amount: 266250,
+          },
+          {
+            id: 9,
+            type: "قسط ربع سنوي",
+            date: "01-12-2025",
+            remaining: "266,250",
+            discount: "31,300",
+            net: "234,950",
+            hasDiscount: true,
+            amount: 234950,
+          },
+        ],
+      };
+    }
+
+    const client = apartmentsData.العملاء.find(
+      (c) => c.اسم_العميل === clientName
+    );
+
+    if (!client || !client.الوحدات[0]) {
+      return {
+        customerName: clientName,
+        unitCode: "-",
+        unitModel: "-",
+        floor: "-",
+        installments: [],
+      };
+    }
+
+    const unit = client.الوحدات[0];
+    return {
+      customerName: client.اسم_العميل,
+      unitCode: (unit as any).الكود || "-",
+      unitModel: unit.النموذج,
+      floor: "-", // Info not in JSON
+      installments: unit.الاقساط.map((inst) => ({
+        id: inst.رقم_القسط,
+        type: "قسط ربع سنوي",
+        date: "-",
+        remaining: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
+        discount: "0",
+        net: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
+        amount: inst.الصافي_بعد_الخصم,
+      })),
+    };
+  }, [clientName]);
+
+  const {
+    customerName,
+    unitCode,
+    unitModel,
+    floor,
+    installments: paymentData,
+  } = clientData;
+
+  // Calculate totals
+  const totalRemaining = paymentData
+    .reduce((sum, inst) => sum + inst.amount, 0)
+    .toLocaleString("en-US");
 
   return (
     <div
@@ -147,25 +216,23 @@ export default function UniSeriesResidentialPresentation() {
                   <div className="flex gap-[5px] items-center">
                     <span className="text-[#ffcf57]">اسم العميل:</span>
                     <span className="text-white font-bold text-[12px]">
-                      سوسو محمد فكرى محمد شرف
+                      {customerName}
                     </span>
                   </div>
                   <div className="flex gap-[5px] items-center">
                     <span className="text-[#ffcf57]">القطعة:</span>
-                    <span className="text-white font-medium">
-                      يونى (8) شمال الجامعة القطعه رقم (27)
-                    </span>
+                    <span className="text-white font-medium">{unitCode}</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[15px]">
                   <div className="flex gap-[5px] items-center">
                     <span className="text-[#ffcf57]">النموذج:</span>
-                    <span className="text-white font-bold">محل (5)/(6)</span>
+                    <span className="text-white font-bold">{unitModel}</span>
                   </div>
-                  <div className="flex gap-[5px] items-center">
+                  {/* <div className="flex gap-[5px] items-center">
                     <span className="text-[#ffcf57]">الدور:</span>
-                    <span className="text-white font-bold">الميزانين</span>
-                  </div>
+                    <span className="text-white font-bold">{floor}</span>
+                  </div> */}
                 </div>
               </div>
 
@@ -231,13 +298,13 @@ export default function UniSeriesResidentialPresentation() {
                   </div>
                   <div className="flex items-center justify-center"></div>
                   <div className="flex items-center justify-center text-white font-medium">
-                    1,331,250
+                    {totalRemaining}
                   </div>
                   <div className="flex items-center justify-center text-[#ffcf57] font-bold">
-                    31,300
+                    0
                   </div>
                   <div className="flex items-center justify-center text-white">
-                    1,277,750
+                    {totalRemaining}
                   </div>
                 </div>
               </div>

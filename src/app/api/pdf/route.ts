@@ -30,7 +30,33 @@ export async function GET(req: NextRequest) {
       timeout: 60000,
     });
 
-    // Generate PDF
+    // Count actual slides to limit pages
+    const slideCount = await page.evaluate(() => {
+      const slides = document.querySelectorAll("#print-content > div");
+      return slides.length;
+    });
+
+    console.log(`Detected ${slideCount} slides`);
+
+    // Inject additional CSS to ensure no extra pages
+    await page.evaluate(() => {
+      const style = document.createElement("style");
+      style.textContent = `
+        @media print {
+          #print-content > div:last-child::after {
+            content: "";
+            display: none !important;
+          }
+          body::after, html::after {
+            content: "";
+            display: none !important;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    });
+
+    // Generate PDF with explicit page range
     const pdfBuffer = await page.pdf({
       width: "596px",
       height: "432px",
@@ -41,8 +67,12 @@ export async function GET(req: NextRequest) {
         bottom: 0,
         left: 0,
       },
+      displayHeaderFooter: false,
+      omitBackground: false,
       // Ensure we capture the print styles and respect CSS @page rules
       preferCSSPageSize: true,
+      // Explicitly limit to only the slides we have
+      pageRanges: `1-${slideCount}`,
     });
 
     await browser.close();
