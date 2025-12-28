@@ -119,7 +119,7 @@ export default function UniSeriesPresentation() {
       >
         {/* Slide 1: Hero - UNI Series */}
         <Slide gradient>
-          <div className=" flex items-center justify-center w-full h-[407px]">
+          <div className=" flex items-center justify-center w-full h-[520px]">
             <HeroLogo />
           </div>
         </Slide>
@@ -127,7 +127,7 @@ export default function UniSeriesPresentation() {
         {/* Slide 2: Welcome Message */}
         <Slide gradient>
           <div className="p-[13px] ">
-            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[407px] text-center">
+            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[520px] text-center">
               <h2 className="text-white text-[22px] font-medium mb-6">
                 مبسوطين إنك بقيت جزء من عيلة آركس
               </h2>
@@ -321,7 +321,12 @@ export default function UniSeriesPresentation() {
                 للحمامات والاوفيس والبلكونات )
               </li>
             </ul>
+          </div>
+        </Slide>
 
+        {/* Slide 6: Super Lux Package Details */}
+        <Slide gradient>
+          <div className="py-6 px-6 bg-white/5">
             {/* Paint Works */}
             <SectionHeader>اعمال الدهانات</SectionHeader>
             <div className="text-white text-xs text-right py-3 px-4 leading-relaxed">
@@ -469,7 +474,7 @@ export default function UniSeriesPresentation() {
         {/* Slide 7: Thank You */}
         <Slide gradient>
           <div className="relative">
-            <div className=" px-8 h-[432px] flex flex-col items-center justify-center">
+            <div className=" px-8 h-[520px] flex flex-col items-center justify-center">
               <p className="text-white text-7xl font-bold mb-12">شكراً</p>
             </div>
             <div className=" flex items-center justify-center absolute bottom-[21px] left-0 right-0">

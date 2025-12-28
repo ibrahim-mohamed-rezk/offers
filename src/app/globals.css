@@ -42,7 +42,7 @@
 @media print {
   /* Page configuration to fit slide size */
   @page {
-    size: 596px 432px; /* Match the slide dimensions exactly */
+    size: 596px 520px; /* Match the slide dimensions exactly */
     margin: 0;
   }
 
@@ -102,9 +102,9 @@
     margin-right: 0 !important;
     padding: 0 !important;
     width: 596px !important;
-    height: 432px !important;
-    min-height: 432px !important;
-    max-height: 432px !important;
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
     orphans: 1;

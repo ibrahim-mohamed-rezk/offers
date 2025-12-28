@@ -162,7 +162,7 @@ export default function UniSeriesResidentialPresentation() {
       >
         {/* Slide 1: Hero - UNI Series */}
         <Slide gradient>
-          <div className="flex items-center justify-center w-full h-[407px]">
+          <div className="flex items-center justify-center w-full h-[520px]">
             <HeroLogo />
           </div>
         </Slide>
@@ -170,7 +170,7 @@ export default function UniSeriesResidentialPresentation() {
         {/* Slide 2: Welcome Message */}
         <Slide gradient>
           <div className="p-[13px]">
-            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[407px] text-center">
+            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[520px] text-center">
               <h2 className="text-white text-[22px] font-medium mb-6">
                 مبسوطين إنك بقيت جزء من عيلة آركس
               </h2>
@@ -232,7 +232,9 @@ export default function UniSeriesResidentialPresentation() {
                       </div>
                       <div className="flex gap-[5px] items-center">
                         <span className="text-[#ffcf57]">الدور:</span>
-                        <span className="text-white font-bold">{unit.floor}</span>
+                        <span className="text-white font-bold">
+                          {unit.floor}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -442,20 +444,14 @@ export default function UniSeriesResidentialPresentation() {
                   </p>
                 </div>
               </div>
-              {/* Row 5 */}
-              <div className="flex border-b border-white/10">
-                <div className="w-[120px] bg-white/10 border-l border-white/10 flex items-center justify-center py-[10px]">
-                  <span className="text-white text-[9px] text-center px-[5px]">
-                    توريد وتركيب حوض مطبخ
-                  </span>
-                </div>
-                <div className="flex-1 py-[10px] px-[15px]">
-                  <p className="text-white text-[10px] text-right">
-                    ستانلس ستيل فرانكى او ما يعادلة
-                  </p>
-                </div>
-              </div>
+            </div>
+          </div>
+        </Slide>
 
+        {/* Slide 5: Super Lux Package - Residential Unit - Part 1 */}
+        <Slide gradient>
+          <div className="p-[14px]">
+            <div className="bg-white/5 w-full mx-auto relative">
               {/* Section: اعمال الرخام والسيراميك */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
@@ -506,14 +502,7 @@ export default function UniSeriesResidentialPresentation() {
                   بشكل منفصل
                 </p>
               </div>
-            </div>
-          </div>
-        </Slide>
 
-        {/* Slide 6: Super Lux Package - Residential Unit - Part 2 */}
-        <Slide gradient>
-          <div className="p-[14px]">
-            <div className="bg-white/5 w-full mx-auto relative">
               {/* Section: اعمال المعجون */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center mt-[20px]">
                 <span className="text-white text-[16px] font-medium">
@@ -531,7 +520,14 @@ export default function UniSeriesResidentialPresentation() {
                   <p className="pr-[20px]">- عدد 3 اوجة دهان بلاستيك</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </Slide>
 
+        {/* Slide 6: Super Lux Package - Residential Unit - Part 2 */}
+        <Slide gradient>
+          <div className="p-[14px]">
+            <div className="bg-white/5 w-full mx-auto relative">
               {/* Section: اعمال الاسقف - TABLE LAYOUT */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
@@ -696,7 +692,7 @@ export default function UniSeriesResidentialPresentation() {
 
         {/* Slide 8: Thank You */}
         <Slide gradient>
-          <div className="relative h-[432px]">
+          <div className="relative h-[520px]">
             <div className="px-8 h-full flex flex-col items-center justify-center">
               <p className="text-white text-[101.923px] font-bold">شكراً</p>
             </div>

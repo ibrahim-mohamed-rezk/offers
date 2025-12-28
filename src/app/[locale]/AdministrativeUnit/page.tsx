@@ -91,7 +91,7 @@ export default function UniSeriesAdministrativePresentation() {
           discount: "0",
           net: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
           amount: inst.الصافي_بعد_الخصم,
-          date: inst.تاريخ_الاستحقاق
+          date: inst.تاريخ_الاستحقاق,
         })),
       })),
     };
@@ -116,7 +116,7 @@ export default function UniSeriesAdministrativePresentation() {
       >
         {/* Slide 1: Hero - UNI Series */}
         <Slide gradient>
-          <div className="flex items-center justify-center w-full h-[407px]">
+          <div className="flex items-center justify-center w-full h-[520px]">
             <HeroLogo />
           </div>
         </Slide>
@@ -124,7 +124,7 @@ export default function UniSeriesAdministrativePresentation() {
         {/* Slide 2: Welcome Message */}
         <Slide gradient>
           <div className="p-[13px]">
-            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[407px] text-center">
+            <div className="w-full px-[80px] flex border border-white/5 flex-col items-center justify-center h-[520px] text-center">
               <h2 className="text-white text-[22px] font-medium mb-6">
                 مبسوطين إنك بقيت جزء من عيلة آركس
               </h2>
@@ -368,7 +368,14 @@ export default function UniSeriesAdministrativePresentation() {
                   • توريد وتركيب سيراميك ارضيات و حوائط الحمام كليوباترا 30*60
                 </p>
               </div>
+            </div>
+          </div>
+        </Slide>
 
+        {/* Slide 5: Super Lux Package - Administrative Unit - Part 1 */}
+        <Slide gradient>
+          <div className="p-[14px]">
+            <div className="bg-white/5 w-full mx-auto relative">
               {/* Section: اعمال المعجون */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
@@ -398,14 +405,7 @@ export default function UniSeriesAdministrativePresentation() {
                   الفيشة
                 </p>
               </div>
-            </div>
-          </div>
-        </Slide>
 
-        {/* Slide 6: Super Lux Package - Administrative Unit - Part 2 */}
-        <Slide gradient>
-          <div className="p-[14px]">
-            <div className="bg-white/5 w-full mx-auto relative">
               {/* Section: اعمال الاسقف */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center mt-[20px]">
                 <span className="text-white text-[16px] font-medium">
@@ -430,7 +430,14 @@ export default function UniSeriesAdministrativePresentation() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </Slide>
 
+        {/* Slide 6: Super Lux Package - Administrative Unit - Part 2 */}
+        <Slide gradient>
+          <div className="p-[14px]">
+            <div className="bg-white/5 w-full mx-auto relative">
               {/* Section: اعمال الكهرباء ( الاجهزة والتشطيبات ) */}
               <div className="bg-white/20 h-[33px] w-full flex items-center justify-center">
                 <span className="text-white text-[16px] font-medium">
@@ -570,7 +577,7 @@ export default function UniSeriesAdministrativePresentation() {
         </Slide>
         {/* Slide 8: Thank You */}
         <Slide gradient>
-          <div className="relative h-[432px]">
+          <div className="relative h-[520px]">
             <div className="px-8 h-full flex flex-col items-center justify-center">
               <p className="text-white text-[101.923px] font-bold">شكراً</p>
             </div>

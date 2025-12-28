@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
     // Set viewport to match the slide dimensions exactly
     await page.setViewport({
       width: 596,
-      height: 432,
+      height: 520,
       deviceScaleFactor: 2, // High resolution for better quality
     });
 
@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
     // Generate PDF with explicit page range
     const pdfBuffer = await page.pdf({
       width: "596px",
-      height: "432px",
+      height: "520px",
       printBackground: true,
       margin: {
         top: 0,

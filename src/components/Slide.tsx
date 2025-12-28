@@ -8,7 +8,7 @@ const Slide = ({
   gradient?: boolean;
 }) => (
   <div
-    className={`w-[596px] h-[432px] mx-auto print:mx-0 overflow-hidden shadow-2xl print:shadow-none ${className}`}
+    className={`w-[596px] print:h-fit h-[520px] mx-auto print:mx-0 overflow-hidden shadow-2xl print:shadow-none ${className}`}
     style={
       gradient
         ? {
