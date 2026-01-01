@@ -36,6 +36,8 @@ export default function UniSeriesPresentation() {
                 discount: "0",
                 net: "61,000",
                 amount: 61000,
+                amountBeforeDiscount: 61000,
+                amountDiscount: 0,
               },
               {
                 id: 2,
@@ -45,6 +47,8 @@ export default function UniSeriesPresentation() {
                 discount: "0",
                 net: "61,000",
                 amount: 61000,
+                amountBeforeDiscount: 61000,
+                amountDiscount: 0,
               },
               {
                 id: 3,
@@ -54,6 +58,8 @@ export default function UniSeriesPresentation() {
                 discount: "0",
                 net: "61,000",
                 amount: 61000,
+                amountBeforeDiscount: 61000,
+                amountDiscount: 0,
               },
               {
                 id: 4,
@@ -63,6 +69,8 @@ export default function UniSeriesPresentation() {
                 discount: "0",
                 net: "61,000",
                 amount: 61000,
+                amountBeforeDiscount: 61000,
+                amountDiscount: 0,
               },
             ],
           },
@@ -89,12 +97,17 @@ export default function UniSeriesPresentation() {
         floor: (unit as any).الدور || "-",
         installments: unit.الاقساط.map((inst) => ({
           id: inst.رقم_القسط,
-          type: "قسط ربع سنوي",
-          date: "-",
-          remaining: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
-          discount: "0",
+          type: inst.نوع_القسط || "-",
+          date: inst.تاريخ_الاستحقاق || "-",
+          remaining: inst.المبلغ_المتبقي.toLocaleString("en-US"),
+          discount: ("قيمة_الخصم" in inst
+            ? inst.قيمة_الخصم
+            : 0
+          )?.toLocaleString("en-US"),
           net: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
           amount: inst.الصافي_بعد_الخصم,
+          amountBeforeDiscount: inst.المبلغ_المتبقي,
+          amountDiscount: "قيمة_الخصم" in inst ? inst.قيمة_الخصم : 0,
         })),
       })),
     };
@@ -156,16 +169,24 @@ export default function UniSeriesPresentation() {
             .reduce((sum, inst) => sum + (inst.amount || 0), 0)
             .toLocaleString("en-US");
 
+          const totalRemainingBeforeDiscount = unit.installments
+            .reduce((sum, inst) => sum + (inst.amountBeforeDiscount || 0), 0)
+            .toLocaleString("en-US");
+
+          const totalDiscount = unit.installments
+            .reduce((sum, inst) => sum + (inst.amountDiscount || 0), 0)
+            .toLocaleString("en-US");
+
           return (
             <Slide key={index} gradient>
               <div className="p-[13px]">
                 <div className="border bg-white/5 border-white/5 ">
-                  <h2 className="text-white mt-[45px] text-lg font-bold text-center mb-6">
+                  <h2 className="text-white mt-[30px] text-lg font-bold text-center mb-4">
                     كشف السداد المبكر - Early Payment Plan
                   </h2>
 
                   {/* Customer Info */}
-                  <div className="flex px-[25px] justify-between gap-8 mt-[53px] text-sm">
+                  <div className="flex px-[25px] justify-between gap-8 mt-[33px] text-sm">
                     <div className="flex flex-col gap-3">
                       <div className="flex gap-2 items-center">
                         <span className="text-[#ffcf57]">اسم العميل:</span>
@@ -197,7 +218,7 @@ export default function UniSeriesPresentation() {
                   </div>
 
                   {/* Payment Table */}
-                  <div className="bg-white/5 mt-[40px] overflow-hidden">
+                  <div className="bg-white/5 mt-[10px] overflow-hidden">
                     {/* Table Header */}
                     <div className="bg-white/20 grid border border-white/5 grid-cols-6 gap-2  text-xs text-white font-medium">
                       <div className="text-center border-l border-white/5 h-full py-2  ">
@@ -246,10 +267,10 @@ export default function UniSeriesPresentation() {
                       </div>
                       <div className="text-center"></div>
                       <div className="text-center text-white font-medium">
-                        {totalRemaining}
+                        {totalRemainingBeforeDiscount}
                       </div>
                       <div className="text-center text-[#ffcf57] font-bold">
-                        0
+                        {totalDiscount}
                       </div>
                       <div className="text-center text-white">
                         {totalRemaining}

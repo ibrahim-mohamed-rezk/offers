@@ -33,6 +33,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 2,
@@ -42,6 +44,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 3,
@@ -51,6 +55,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 4,
@@ -60,6 +66,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 5,
@@ -69,6 +77,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 6,
@@ -78,6 +88,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 7,
@@ -87,6 +99,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 8,
@@ -96,6 +110,8 @@ export default function UniSeriesResidentialPresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 9,
@@ -106,6 +122,8 @@ export default function UniSeriesResidentialPresentation() {
                 net: "234,950",
                 hasDiscount: true,
                 amount: 234950,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
             ],
           },
@@ -132,12 +150,17 @@ export default function UniSeriesResidentialPresentation() {
         floor: unit.الدور, // Info not in JSON
         installments: unit.الاقساط.map((inst) => ({
           id: inst.رقم_القسط,
-          type: "قسط ربع سنوي",
-          date: "-",
-          remaining: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
-          discount: "0",
+          type: inst.نوع_القسط,
+          date: inst.تاريخ_الاستحقاق,
+          remaining: inst.المبلغ_المتبقي.toLocaleString("en-US"),
+          discount: ("قيمة_الخصم" in inst
+            ? inst.قيمة_الخصم
+            : 0
+          )?.toLocaleString("en-US"),
           net: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
           amount: inst.الصافي_بعد_الخصم,
+          amountBeforeDiscount: inst.المبلغ_المتبقي,
+          amountDiscount: "قيمة_الخصم" in inst ? inst.قيمة_الخصم : 0,
         })),
       })),
     };
@@ -199,6 +222,14 @@ export default function UniSeriesResidentialPresentation() {
             .reduce((sum, inst) => sum + inst.amount, 0)
             .toLocaleString("en-US");
 
+          const totalRemainingBeforeDiscount = unit.installments
+            .reduce((sum, inst) => sum + (inst.amountBeforeDiscount || 0), 0)
+            .toLocaleString("en-US");
+
+          const totalDiscount = unit.installments
+            .reduce((sum, inst) => sum + (inst.amountDiscount || 0), 0)
+            .toLocaleString("en-US");
+
           return (
             <Slide key={index} gradient>
               <div className="p-[13px]">
@@ -208,7 +239,7 @@ export default function UniSeriesResidentialPresentation() {
                   </h2>
 
                   {/* Customer Info */}
-                  <div className="flex px-[25px] justify-between gap-8 mt-[30px] text-[10px]">
+                  <div className="flex px-[25px] justify-between gap-8 mt-[20px] text-[10px]">
                     <div className="flex flex-col gap-[15px]">
                       <div className="flex gap-[5px] items-center">
                         <span className="text-[#ffcf57]">اسم العميل:</span>
@@ -240,7 +271,7 @@ export default function UniSeriesResidentialPresentation() {
                   </div>
 
                   {/* Payment Table */}
-                  <div className="mt-[25px] overflow-hidden">
+                  <div className="mt-[20px] overflow-hidden">
                     {/* Table Header */}
                     <div className="bg-white/20 h-[33px] grid grid-cols-6 text-[10px] text-white font-medium">
                       <div className="flex items-center justify-center border-l border-white/10">
@@ -301,10 +332,10 @@ export default function UniSeriesResidentialPresentation() {
                       </div>
                       <div className="flex items-center justify-center"></div>
                       <div className="flex items-center justify-center text-white font-medium">
-                        {totalRemaining}
+                        {totalRemainingBeforeDiscount}
                       </div>
                       <div className="flex items-center justify-center text-[#ffcf57] font-bold">
-                        0
+                        {totalDiscount}
                       </div>
                       <div className="flex items-center justify-center text-white">
                         {totalRemaining}
