@@ -43,6 +43,8 @@ export default function UniSeriesAdministrativePresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 2,
@@ -52,6 +54,8 @@ export default function UniSeriesAdministrativePresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
               {
                 id: 3,
@@ -61,6 +65,8 @@ export default function UniSeriesAdministrativePresentation() {
                 discount: "0",
                 net: "266,250",
                 amount: 266250,
+                amountBeforeDiscount: 266250,
+                amountDiscount: 0,
               },
             ],
           },
@@ -86,11 +92,16 @@ export default function UniSeriesAdministrativePresentation() {
         floor: unit.الدور,
         installments: unit.الاقساط.map((inst) => ({
           id: inst.رقم_القسط,
-          type: "قسط ربع سنوي",
-          remaining: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
-          discount: "0",
+          type: inst.نوع_القسط || "-",
+          remaining: inst.المبلغ_المتبقي.toLocaleString("en-US") || "0",
+          discount:
+            "قيمة_الخصم" in inst
+              ? inst.قيمة_الخصم?.toLocaleString("en-US") || "0"
+              : "0",
           net: inst.الصافي_بعد_الخصم.toLocaleString("en-US"),
           amount: inst.الصافي_بعد_الخصم,
+          amountBeforeDiscount: inst.المبلغ_المتبقي,
+          amountDiscount: "قيمة_الخصم" in inst ? inst.قيمة_الخصم : 0,
           date: inst.تاريخ_الاستحقاق,
         })),
       })),
@@ -152,6 +163,14 @@ export default function UniSeriesAdministrativePresentation() {
           // Calculate totals for this unit where each installment has an 'amount' property
           const totalRemaining = unit.installments
             .reduce((sum, inst) => sum + (inst.amount || 0), 0)
+            .toLocaleString("en-US");
+
+          const totalRemainingBeforeDiscount = unit.installments
+            .reduce((sum, inst) => sum + (inst.amountBeforeDiscount || 0), 0)
+            .toLocaleString("en-US");
+
+          const totalDiscount = unit.installments
+            .reduce((sum, inst) => sum + (inst.amountDiscount || 0), 0)
             .toLocaleString("en-US");
 
           return (
@@ -256,10 +275,10 @@ export default function UniSeriesAdministrativePresentation() {
                       </div>
                       <div className="flex items-center justify-center"></div>
                       <div className="flex items-center justify-center text-white font-medium">
-                        {totalRemaining}
+                        {totalRemainingBeforeDiscount}
                       </div>
                       <div className="flex items-center justify-center text-[#ffcf57] font-bold">
-                        0
+                        {totalDiscount}
                       </div>
                       <div className="flex items-center justify-center text-white">
                         {totalRemaining}
